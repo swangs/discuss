@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: servers
+#
+#  id             :integer          not null, primary key
+#  name           :string           not null
+#  owner_id       :integer          not null
+#  direct_message :boolean
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  owner_id: 1
+  direct_message: false
+
+two:
+  name: MyString
+  owner_id: 1
+  direct_message: false
