@@ -63,7 +63,7 @@
           </div>
           <div className="auth-container">
             <h1>{header}</h1>
-            <ul>
+            <ul className="errors">
               {this.renderErrors()}
             </ul>
             <form
