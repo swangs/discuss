@@ -17,6 +17,10 @@ const receiveErrors = (errors) => {
   };
 };
 
+export const clearErrors = () => dispatch => {
+  return dispatch(receiveErrors([]));
+};
+
 export const register = (formUser) => dispatch => {
   return SessionApiUtil.register(formUser).then(
     user => dispatch(receiveCurrentUser(user)),

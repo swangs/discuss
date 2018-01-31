@@ -9,7 +9,10 @@ class SessionForm extends React.Component {
       username: "",
       password: ""
     };
+  }
 
+  componentDidMount(){
+    this.props.clearErrors();
   }
 
   handleInput(type) {

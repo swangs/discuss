@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { register, login } from '../../actions/session_actions';
+import { register, login, clearErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const submitForm = ownProps.location.pathname === '/login' ? login : register;
   return {
+    clearErrors: () => dispatch(clearErrors()),
     submitForm: formUser => dispatch(submitForm(formUser))
   };
 };
