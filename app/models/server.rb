@@ -5,13 +5,14 @@
 #  id             :integer          not null, primary key
 #  name           :string           not null
 #  owner_id       :integer          not null
-#  direct_message :boolean
+#  direct_message :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 
 class Server < ApplicationRecord
-  validates :name, :owner, presence: true;
+  validates :name, :owner, presence: true
+  validates :name, uniqueness: true
 
   belongs_to :owner,
   primary_key: :id,

@@ -4,9 +4,14 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //TESTING
-import { fetchPublicServers } from './util/server_util';
+import { fetchPublicServers,
+  fetchServer,
+  postServer,
+  deleteServer} from './util/server_util';
 window.fetchPublicServers = fetchPublicServers;
-
+window.fetchServer = fetchServer;
+window.postServer = postServer;
+window.deleteServer = deleteServer;
 //TESTING
 
 document.addEventListener('DOMContentLoaded', () => {

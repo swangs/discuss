@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180131175207) do
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
     t.integer "owner_id", null: false
-    t.boolean "direct_message"
+    t.boolean "direct_message", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_servers_on_name", unique: true

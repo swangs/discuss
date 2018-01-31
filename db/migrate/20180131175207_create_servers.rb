@@ -3,7 +3,7 @@ class CreateServers < ActiveRecord::Migration[5.1]
     create_table :servers do |t|
       t.string :name, null: false
       t.integer :owner_id, null: false
-      t.boolean :direct_message
+      t.boolean :direct_message, default: false
 
       t.timestamps
     end

@@ -27,6 +27,6 @@ Server.create(name: "user4Server", owner_id: 6, direct_message: true)
 Server.create(name: "user5Server", owner_id: 7, direct_message: true)
 
 # Public Servers
-Server.create(name: "App Academy", owner_id: 1, direct_message: false)
-Server.create(name: "Donut", owner_id: 1, direct_message: false)
-Server.create(name: "Coffee", owner_id: 1, direct_message: false)
+Server.create(name: "App Academy", owner_id: 1)
+Server.create(name: "Donut", owner_id: 1)
+Server.create(name: "Coffee", owner_id: 1)
