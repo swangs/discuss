@@ -36,9 +36,16 @@ class SessionForm extends React.Component {
   }
 
   switchForms() {
+    const demoUser = () => {
+      return () => {
+        this.props.submitForm({username: "demo", password: "demouser"});
+      };
+    };
+    const demo = <button onClick={demoUser()}>Demo</button>;
+
     if (this.props.formType === "login") {
       return (
-        <p>Need an account? <Link to="/register">Register</Link></p>
+        <p>Need an account? {demo} <Link to="/register">Register</Link></p>
       );
     } else {
       return (
