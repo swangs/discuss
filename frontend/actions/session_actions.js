@@ -17,23 +17,23 @@ const receiveErrors = (errors) => {
   };
 };
 
-export const signUp = (formUser) => dispatch => {
-  return SessionApiUtil.signUp(formUser).then(
+export const register = (formUser) => dispatch => {
+  return SessionApiUtil.register(formUser).then(
     user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error))
+    error => dispatch(receiveErrors(error.responseJSON))
   );
 };
 
-export const signIn = (formUser) => dispatch => {
-  return SessionApiUtil.signUp(formUser).then(
+export const login = (formUser) => dispatch => {
+  return SessionApiUtil.login(formUser).then(
     user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error))
+    error => dispatch(receiveErrors(error.responseJSON))
   );
 };
 
-export const signOut = () => dispatch => {
-  return SessionApiUtil.signOut().then(
+export const logout = () => dispatch => {
+  return SessionApiUtil.logout().then(
     user => dispatch(receiveCurrentUser(null)),
-    error => dispatch(receiveErrors(error))
+    error => dispatch(receiveErrors(error.responseJSON))
   );
 };

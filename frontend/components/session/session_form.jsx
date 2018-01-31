@@ -24,6 +24,14 @@ class SessionForm extends React.Component {
     };
   }
 
+  renderErrors() {
+    return (
+      this.props.errors.map((error,i) => {
+        return <li key={i}>{error}</li>;
+      })
+    );
+  }
+
   switchForms() {
     if (this.props.formType === "login") {
       return (
@@ -37,12 +45,14 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const header = this.props.formType === 'login' ? "WELCOME BACK!" : "CREATE AN ACCOUNT"
-
+    const header = this.props.formType === 'login' ? "WELCOME BACK!" : "CREATE AN ACCOUNT";
     return (
       <div>
         <h1>{header}</h1>
-        <form>
+        <ul>
+          {this.renderErrors()}
+        </ul>
+        <form onSubmit={this.handleSubmit()}>
           <label>Username:
             <input
               type="text"
