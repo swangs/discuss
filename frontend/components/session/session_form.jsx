@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+  import React from 'react';
+  import { Link } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+  class SessionForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,6 +23,7 @@ class SessionForm extends React.Component {
 
   handleSubmit() {
     return (e) => {
+      e.preventDefault();
       this.props.submitForm(this.state);
     };
   }
@@ -37,11 +38,9 @@ class SessionForm extends React.Component {
 
   switchForms() {
     const demoUser = () => {
-      return () => {
-        this.props.submitForm({username: "demo", password: "demouser"});
-      };
+      this.props.submitForm({username: "demo", password: "demouser"});
     };
-    const demo = <button onClick={demoUser()}>Demo</button>;
+    const demo = <button onClick={demoUser}>Demo</button>;
 
     if (this.props.formType === "login") {
       return (
@@ -58,7 +57,7 @@ class SessionForm extends React.Component {
     const header = this.props.formType === 'login' ? "WELCOME BACK!" : "CREATE AN ACCOUNT";
     return (
       <div>
-        <h1>{header}</h1>
+        <h2>{header}</h2>
         <ul>
           {this.renderErrors()}
         </ul>
