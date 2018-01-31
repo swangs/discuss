@@ -34,7 +34,7 @@ class Api::ServersController < ApplicationController
         render json: ["Server does not Exist"]
       end
     else
-      render json: ["Cannot delete this server"], status: 404
+      render json: ["You cannot delete this server"], status: 404
     end
   end
 

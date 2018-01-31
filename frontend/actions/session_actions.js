@@ -10,7 +10,7 @@ const receiveCurrentUser = (currentUser) => {
   };
 };
 
-const receiveErrors = (errors) => {
+const receiveSessionErrors = (errors) => {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -18,26 +18,26 @@ const receiveErrors = (errors) => {
 };
 
 export const clearErrors = () => dispatch => {
-  return dispatch(receiveErrors([]));
+  return dispatch(receiveSessionErrors([]));
 };
 
 export const register = (formUser) => dispatch => {
   return SessionApiUtil.register(formUser).then(
     user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error.responseJSON))
+    error => dispatch(receiveSessionErrors(error.responseJSON))
   );
 };
 
 export const login = (formUser) => dispatch => {
   return SessionApiUtil.login(formUser).then(
     user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error.responseJSON))
+    error => dispatch(receiveSessionErrors(error.responseJSON))
   );
 };
 
 export const logout = () => dispatch => {
   return SessionApiUtil.logout().then(
     user => dispatch(receiveCurrentUser(null)),
-    error => dispatch(receiveErrors(error.responseJSON))
+    error => dispatch(receiveSessionErrors(error.responseJSON))
   );
 };

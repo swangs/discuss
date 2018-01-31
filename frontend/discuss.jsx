@@ -4,12 +4,12 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //TESTING
-import { fetchPublicServers,
-  fetchServer,
+import { getPublicServers,
+  getServer,
   postServer,
   deleteServer} from './util/server_util';
-window.fetchPublicServers = fetchPublicServers;
-window.fetchServer = fetchServer;
+window.getPublicServers = getPublicServers;
+window.getServer = getServer;
 window.postServer = postServer;
 window.deleteServer = deleteServer;
 //TESTING

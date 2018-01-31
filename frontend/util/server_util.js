@@ -1,11 +1,11 @@
-export const fetchPublicServers = () => {
+export const getPublicServers = () => {
   return $.ajax({
     url: 'api/servers',
     method: "GET"
   });
 };
 
-export const fetchServer =  (serverId) => {
+export const getServer =  (serverId) => {
   return $.ajax({
     url: `api/servers/${serverId}`,
     method: "GET",
