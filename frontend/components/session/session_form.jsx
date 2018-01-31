@@ -56,29 +56,42 @@
   render() {
     const header = this.props.formType === 'login' ? "WELCOME BACK!" : "CREATE AN ACCOUNT";
     return (
-      <div>
-        <h2>{header}</h2>
-        <ul>
-          {this.renderErrors()}
-        </ul>
-        <form onSubmit={this.handleSubmit()}>
-          <label>Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleInput("username")}
-              ></input>
-          </label>
-          <label>Password:
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.handleInput("password")}
-              ></input>
-          </label>
-          <input type="submit" value={this.props.formType}></input>
-        </form>
-        {this.switchForms()}
+      <div id="session">
+        <div className="auth-box">
+          <div className="auth-logo">
+            <h1><Link to="/">DISCUSS</Link></h1>
+          </div>
+          <div className="auth-container">
+            <h1>{header}</h1>
+            <ul>
+              {this.renderErrors()}
+            </ul>
+            <form
+              className="auth-form"
+              onSubmit={this.handleSubmit()}>
+              <label>Username<br/>
+                <input
+                  type="text"
+                  value={this.state.username}
+                  onChange={this.handleInput("username")}>
+                </input>
+              </label>
+              <label>Password<br/>
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleInput("password")}>
+                </input>
+              </label>
+              <input
+                className="auth-submit"
+                type="submit"
+                value={this.props.formType}>
+              </input>
+            </form>
+            {this.switchForms()}
+          </div>
+        </div>
       </div>
     );
 
