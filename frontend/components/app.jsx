@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import { AuthRoute, ProtRoute } from '../util/route_util';
 import SessionFormContainer from './session/session_form_container';
 import SplashContainer from './splash/splash_container';
