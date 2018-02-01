@@ -9,7 +9,7 @@ class ChannelIndex extends React.Component {
       serverName = this.props.currentServer.name;
     }
     return (
-      <div>
+      <div className="channel-index">
         <h1>{serverName}</h1>
         <ul>
           CHANNEL LIST

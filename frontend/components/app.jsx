@@ -3,7 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import { AuthRoute, ProtRoute } from '../util/route_util';
 import SessionFormContainer from './session/session_form_container';
 import SplashContainer from './splash/splash_container';
-import Me from './server/me'
+import Me from './server/me';
 import Server from './server/server';
 
 const App = () => (

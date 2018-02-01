@@ -19,7 +19,7 @@ User.create(username: "user4", password: "password")
 User.create(username: "user5", password: "password")
 
 Server.create(name: "swangoServer", owner_id: 1, direct_message: true)
-Server.create(name: "demoServer", owner_id: 2, direct_message: true)
+Server.create(name: "demouserServer", owner_id: 2, direct_message: true)
 Server.create(name: "user1Server", owner_id: 3, direct_message: true)
 Server.create(name: "user2Server", owner_id: 4, direct_message: true)
 Server.create(name: "user3Server", owner_id: 5, direct_message: true)

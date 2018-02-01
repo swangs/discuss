@@ -22,10 +22,12 @@ class ServerIndex extends React.Component {
     }
 
     return (
-      <ul>
-        <Link to="/@me">@me</Link>
-        {serverList}
-      </ul>
+      <div className="server-index">
+        <ul>
+          <Link to="/@me">@me</Link>
+          {serverList}
+        </ul>
+      </div>
     );
   }
 
