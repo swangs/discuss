@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class AddServer extends React.Component {
   constructor(props){
@@ -23,6 +24,9 @@ class AddServer extends React.Component {
     return (e) => {
       e.preventDefault();
       this.props.postServer(this.state)
+        .then(response => this.props.history.push(`/${response.currentServer.id}`))
+        .then(reponse => this.props.onClose())
+        .then(response => this.setState( { name: "" } ));
     };
   }
 
@@ -44,7 +48,7 @@ class AddServer extends React.Component {
       <div>
         <div className="modal">
           <h1>Create or Join Server</h1>
-          <p>Enter a name to join an existing server or
+          <p>Enter a name to join (functionality not added yet) an existing server or
             create one if it doesn't exist!</p>
           <ul className="errors">
             {this.renderErrors()}

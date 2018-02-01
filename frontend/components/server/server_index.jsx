@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddServer from './add_server';
+import AddServerContainer from './add_server_container';
 
 class ServerIndex extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class ServerIndex extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
+      this.props.getServers();
       let serverId = newProps.location.pathname === "/@me" ?
         newProps.currentUser.myServer :
         newProps.location.pathname.slice(1);
@@ -56,9 +57,7 @@ class ServerIndex extends React.Component {
           to={this.props.location.pathname}>
           +
         </Link>
-        <AddServer
-          errors={this.props.errors}
-          postServer={this.props.postServer}
+        <AddServerContainer
           isOpen={this.state.isModalOpen}
           onClose={() => this.closeModal()}
           />
