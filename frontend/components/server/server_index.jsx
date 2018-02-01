@@ -11,7 +11,7 @@ class ServerIndex extends React.Component {
   componentWillMount() {
     this.props.getServers();
     let serverId = this.props.location.pathname === "/@me" ?
-      this.props.currentUser.id :
+      this.props.currentUser.myServer :
       this.props.location.pathname.slice(1);
     this.props.getServer(serverId);
   }
@@ -19,7 +19,7 @@ class ServerIndex extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
       let serverId = newProps.location.pathname === "/@me" ?
-        newProps.currentUser.id :
+        newProps.currentUser.myServer :
         newProps.location.pathname.slice(1);
       this.props.getServer(serverId);
     }
@@ -57,6 +57,8 @@ class ServerIndex extends React.Component {
           +
         </Link>
         <AddServer
+          errors={this.props.errors}
+          postServer={this.props.postServer}
           isOpen={this.state.isModalOpen}
           onClose={() => this.closeModal()}
           />

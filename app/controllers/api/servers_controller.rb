@@ -17,7 +17,7 @@ class Api::ServersController < ApplicationController
       if @server.save
         render 'api/servers/show'
       else
-        render json: @server.errors.full_messages
+        render json: @server.errors.full_messages, status: 422
       end
     else
       render json: ["Must be logged in"], status: 404
@@ -31,7 +31,7 @@ class Api::ServersController < ApplicationController
         @server.delete
         render json: {}
       else
-        render json: ["Server does not Exist"]
+        render json: ["Server does not Exist"], status: 404
       end
     else
       render json: ["You cannot delete this server"], status: 404
