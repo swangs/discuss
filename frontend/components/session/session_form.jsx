@@ -40,11 +40,11 @@
     const demoUser = () => {
       this.props.submitForm({username: "demouser", password: "demouser"});
     };
-    const demo = <button onClick={demoUser}>Demo</button>;
+    const demo = <Link to="@me" onClick={demoUser}>Demo</Link>;
 
     if (this.props.formType === "login") {
       return (
-        <p>Need an account? {demo} <Link to="/register">Register</Link></p>
+        <p>Need an account? <Link to="/register">Register</Link> or {demo}</p>
       );
     } else {
       return (
