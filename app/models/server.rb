@@ -18,4 +18,9 @@ class Server < ApplicationRecord
   primary_key: :id,
   foreign_key: :owner_id,
   class_name: :User
+
+  has_many :server_memberships
+
+  has_many :users,
+  through: :server_memberships
 end

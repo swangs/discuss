@@ -20,6 +20,11 @@ class User < ApplicationRecord
   foreign_key: :owner_id,
   class_name: :Server
 
+  has_many :server_memberships
+
+  has_many :servers,
+  through: :server_memberships
+
   after_initialize :ensure_session_token
 
   attr_reader :password

@@ -26,7 +26,22 @@ Server.create(name: "user3Server", owner_id: 5, direct_message: true)
 Server.create(name: "user4Server", owner_id: 6, direct_message: true)
 Server.create(name: "user5Server", owner_id: 7, direct_message: true)
 
+ServerMembership.create(server_id: 1, user_id: 1)
+ServerMembership.create(server_id: 2, user_id: 2)
+ServerMembership.create(server_id: 3, user_id: 3)
+ServerMembership.create(server_id: 4, user_id: 4)
+ServerMembership.create(server_id: 5, user_id: 5)
+ServerMembership.create(server_id: 6, user_id: 6)
+ServerMembership.create(server_id: 7, user_id: 7)
+
 # Public Servers
 Server.create(name: "Demo Server", owner_id: 1)
 Server.create(name: "App Academy", owner_id: 1)
 Server.create(name: "Chat", owner_id: 1)
+
+ServerMembership.create(server_id: 8, user_id: 1)
+ServerMembership.create(server_id: 9, user_id: 1)
+ServerMembership.create(server_id: 10, user_id: 1)
+ServerMembership.create(server_id: 8, user_id: 2)
+ServerMembership.create(server_id: 9, user_id: 2)
+ServerMembership.create(server_id: 10, user_id: 2)
