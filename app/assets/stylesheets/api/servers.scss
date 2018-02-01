@@ -34,6 +34,13 @@
   .server-button{
     background-color: #2F3136;
     border-radius: 50px;
+
+    .bar {
+      width: 3px;
+      height: 0px;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
   }
 
   .server-button:hover {
@@ -57,6 +64,10 @@
   .active {
     border-radius: 15px;
     background-color: #7082E1;
+
+    .bar{
+      height: 30px;
+    }
   }
 
   .modal {
