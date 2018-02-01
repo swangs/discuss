@@ -12,7 +12,7 @@ const App = () => (
     <AuthRoute path="/login" component={SessionFormContainer} />
     <AuthRoute path="/register" component={SessionFormContainer} />
     <ProtRoute path="/@me" component={Me} />
-    <ProtRoute path="/:serverId/" component={Server} />
+    <ProtRoute path="/:serverId" component={Server} />
   </Switch>
 );
 

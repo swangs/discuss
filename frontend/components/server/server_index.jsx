@@ -11,22 +11,26 @@ class ServerIndex extends React.Component {
     this.props.getServer(serverId);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.location !== newProps.location) {
+      let serverId = newProps.location.pathname.slice(1);
+      this.props.getServer(serverId);
+    }
+  }
+
   render() {
     let serverList;
     if (this.props.servers) {
       serverList = Object.values(this.props.servers).map(server => (
-        <li key={`${server.id}`}>
-          <Link to={`/${server.id}`}>{server.name[0]}</Link>
-        </li>
+        <Link className="server-button" to={`/${server.id}`}>{server.name[0]}</Link>
       ));
     }
 
     return (
       <div className="server-index">
-        <ul>
-          <Link to="/@me">@me</Link>
-          {serverList}
-        </ul>
+        <Link className="me-button" to="/@me">@me</Link>
+        <div className="divider"></div>
+        {serverList}
       </div>
     );
   }

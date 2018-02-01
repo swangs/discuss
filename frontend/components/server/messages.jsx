@@ -6,7 +6,7 @@ class Messages extends React.Component {
   render() {
 
     return (
-      <div className="channel-index">
+      <div className="messages">
         <nav className="messages-nav">
           MESSAGES NOT MADE YET!!!
         </nav>

@@ -12,7 +12,7 @@ class ChannelIndex extends React.Component {
       <div className="channel-index">
         <h1>{serverName}</h1>
         <ul>
-          CHANNEL LIST
+          CHANNEL LIST NOT MADE YET
         </ul>
       </div>
     );
