@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getServer } from '../../actions/server_actions';
+import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 import ChannelIndex from './channel_index';
 
@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getServer: (serverId) => dispatch(getServer(serverId)),
+  logout: () => dispatch(logout()),
 });
 
 export default withRouter(connect(

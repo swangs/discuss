@@ -7,6 +7,18 @@
 .channel-index {
   width: 240px;
   background-color: #2F3136;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border: 3px solid white;
+    border-radius: 50px;
+    width: 80px;
+    padding: 5px 0px;
+    margin: 5px 0px;
+    text-align: center;
+  }
 }
 
 .messages {

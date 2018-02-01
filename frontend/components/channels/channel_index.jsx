@@ -14,6 +14,9 @@ class ChannelIndex extends React.Component {
         <ul>
           CHANNEL LIST NOT MADE YET
         </ul>
+        <br/><br/>
+        <Link to='/' onClick={this.props.logout}>Logout</Link>
+
       </div>
     );
   }
