@@ -68,6 +68,8 @@
 
     h1 {
       margin: 25px 0px;
+      font-size: 18px;
+      font-weight: 700;
     }
 
     .postServer {
@@ -82,6 +84,7 @@
       margin: auto;
 
       P {
+        color: #9EAEB8;
         width: 200px;
         text-align: center;
       }
@@ -113,4 +116,9 @@
     z-index: 9998;
     background: rgba(0, 0, 0, 0.5);
   }
+}
+
+.server-index::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
 }
