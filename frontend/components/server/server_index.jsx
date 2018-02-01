@@ -5,10 +5,13 @@ class ServerIndex extends React.Component {
 
   componentWillMount() {
     this.props.getServers();
+    let serverId = this.props.location.pathname === "/@me" ?
+      this.props.currentUser.id :
+      this.props.location.pathname.slice(1);
+    this.props.getServer(serverId);
   }
 
   render() {
-    console.log(this.props);
     let serverList;
     if (this.props.servers) {
       serverList = Object.values(this.props.servers).map(server => (
