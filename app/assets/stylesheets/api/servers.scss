@@ -14,20 +14,21 @@
     color: #FFF9F2;
     width: 50px;
     height: 50px;
+    font-size: 20px;
     line-height: 50px;
     text-align: center;
     text-decoration: none;
-    margin: 10px 0px;
+    margin: 5px 0px;
   }
 
   .divider {
     width: 35px;
     border-bottom: 2px solid #2F3136;
+    margin: 10px 0px;
   }
 
   .me-button {
-    background-color: #7082E1;
-    border-radius: 15px;
+    margin: 10px 0px;
   }
 
   .server-button{
@@ -37,12 +38,12 @@
 
   .server-button:hover {
     border-radius: 15px;
-    -webkit-transition: border-radius .5s;
+    background-color: #7082E1;
+    -webkit-transition: background-color 1s, border-radius .5s;
   }
 
   .add-server {
     border-radius: 50px;
-    font-size: 20px;
     color: #2F3136;
     border: 3px dotted #2F3136;
   }
@@ -50,8 +51,12 @@
   .add-server:hover {
     color: #DDDDDD;
     border: 3px dotted #DDDDDD;
-    -webkit-transition: color 5s;
-    -webkit-transition: border 1s;
+    -webkit-transition: border 1s, color 1s;
+  }
+
+  .active {
+    border-radius: 15px;
+    background-color: #7082E1;
   }
 
   .modal {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import AddServerContainer from './add_server_container';
 
 class ServerIndex extends React.Component {
@@ -37,18 +37,18 @@ class ServerIndex extends React.Component {
     let serverList;
     if (this.props.servers) {
       serverList = Object.values(this.props.servers).map(server => (
-        <Link
+        <NavLink
           key={server.id}
           className="server-button"
           to={`/${server.id}`}>
           {server.name[0]}
-        </Link>
+        </NavLink>
       ));
     }
 
     return (
       <div className="server-index">
-        <Link className="me-button" to="/@me">@me</Link>
+        <NavLink className="me-button server-button" to="/@me">@me</NavLink>
         <div className="divider"></div>
         {serverList}
         <Link
@@ -62,7 +62,6 @@ class ServerIndex extends React.Component {
           onClose={() => this.closeModal()}
           />
         <div className="divider"></div>
-        <br></br>
       </div>
     );
   }
