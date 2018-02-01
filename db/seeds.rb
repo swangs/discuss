@@ -11,7 +11,7 @@ Server.delete_all
 
 # Users and UserServers
 User.create(username: "swango", password: "master")
-User.create(username: "demo", password: "demouser")
+User.create(username: "demouser", password: "demouser")
 User.create(username: "user1", password: "password")
 User.create(username: "user2", password: "password")
 User.create(username: "user3", password: "password")

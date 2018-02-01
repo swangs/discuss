@@ -38,7 +38,7 @@
 
   switchForms() {
     const demoUser = () => {
-      this.props.submitForm({username: "demo", password: "demouser"});
+      this.props.submitForm({username: "demouser", password: "demouser"});
     };
     const demo = <button onClick={demoUser}>Demo</button>;
 

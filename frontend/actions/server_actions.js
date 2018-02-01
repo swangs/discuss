@@ -4,7 +4,7 @@ export const RECEIVE_ALL_SERVERS = "RECEIVE_ALL_SERVERS";
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVER_ERRORS = "RECEIVE_SERVER_ERRORS";
 
-const receiveAllServers = (servers) => {
+const receiveServers = (servers) => {
   return {
     type: RECEIVE_ALL_SERVERS,
     servers
@@ -29,9 +29,9 @@ export const clearErrors = () => dispatch => {
   return dispatch(receiveServerErrors([]));
 };
 
-export const getPublicServers = () => dispatch => {
-  return ServerApiUtil.getPublicServers().then(
-    servers => dispatch(receiveAllServers(servers)),
+export const getServers = () => dispatch => {
+  return ServerApiUtil.getServers().then(
+    servers => dispatch(receiveServers(servers)),
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };
@@ -52,7 +52,7 @@ export const postServer = (formServer) => dispatch => {
 
 export const deleteServer = (serverId) => dispatch => {
   return ServerApiUtil.deleteServer(serverId).then(
-    servers => dispatch(receiveAllServers(servers)),
+    servers => dispatch(receiveServers(servers)),
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };

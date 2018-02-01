@@ -7,8 +7,9 @@ class Splash extends React.Component {
     if (this.props.currentUser) {
       splashNav = (
         <div className="splashNav">
-          <h2>{this.props.currentUser.username}</h2>
-          <button onClick={this.props.logout}>Logout</button>
+          <h2>Welcome, {this.props.currentUser.username}.</h2>
+          <Link to='/' onClick={this.props.logout}>Logout</Link>
+          <Link to="/@me">Open</Link>
         </div>
       );
     } else {

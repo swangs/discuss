@@ -1,4 +1,4 @@
-export const getPublicServers = () => {
+export const getServers = () => {
   return $.ajax({
     url: 'api/servers',
     method: "GET"
