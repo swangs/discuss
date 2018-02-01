@@ -12,7 +12,7 @@
 
 class Server < ApplicationRecord
   validates :name, :owner, presence: true
-  validates :name, uniqueness: true
+  validates :name, length: { maximum: 15 }, uniqueness: true
 
   belongs_to :owner,
   primary_key: :id,

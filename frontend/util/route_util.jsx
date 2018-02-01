@@ -41,7 +41,6 @@ class Prot extends React.Component {
 
   render() {
     let route;
-    console.log(this.props.location.pathname.slice(1));
     if (!this.props.loggedIn) {
       route = <Redirect to="/login"/>;
     } else {

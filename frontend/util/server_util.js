@@ -26,3 +26,9 @@ export const deleteServer = (serverId) => {
     method: "DELETE",
   });
 };
+
+// export const joinServer = (serverId, userId) => {
+//   return $.ajax({
+//
+//   });
+// };
