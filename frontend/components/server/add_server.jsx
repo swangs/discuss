@@ -47,13 +47,13 @@ class AddServer extends React.Component {
     return (
       <div>
         <div className="modal">
-          <h1>Create or Join Server</h1>
+          <h1>OH, ANOTHER SERVER HUH?</h1>
           <p>Enter a name to join (functionality not added yet) an existing server or
             create one if it doesn't exist!</p>
           <ul className="errors">
             {this.renderErrors()}
           </ul>
-          <form onSubmit={this.handleSubmit()}>
+          <form className="postServer" onSubmit={this.handleSubmit()}>
             <label>Name
               <input
                 type="text"
@@ -61,7 +61,7 @@ class AddServer extends React.Component {
                 onChange={this.handleInput()}
                 >
               </input>
-              <input type="submit" value="Create/Join!"></input>
+              <input className="postSubmit" type="submit" value="Create/Join!"></input>
             </label>
           </form>
         </div>

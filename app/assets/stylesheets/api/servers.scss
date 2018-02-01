@@ -19,52 +19,88 @@
     text-decoration: none;
     margin: 10px 0px;
   }
-}
 
-.divider {
-  width: 30px;
-  border-bottom: 1px solid #2F3136;
-}
+  .divider {
+    width: 35px;
+    border-bottom: 2px solid #2F3136;
+  }
 
-.me-button {
-  background-color: #7082E1;
-  border-radius: 15px;
-}
+  .me-button {
+    background-color: #7082E1;
+    border-radius: 15px;
+  }
 
-.server-button{
-  background-color: #2F3136;
-  border-radius: 50px;
-}
+  .server-button{
+    background-color: #2F3136;
+    border-radius: 50px;
+  }
 
-.server-button:hover {
-  border-radius: 15px;
-  -webkit-transition: border-radius .5s
-}
+  .server-button:hover {
+    border-radius: 15px;
+    -webkit-transition: border-radius .5s;
+  }
 
-.add-server {
-  border-radius: 50px;
-  border: 1px dotted #2F3136;
-}
+  .add-server {
+    border-radius: 50px;
+    font-size: 20px;
+    color: #2F3136;
+    border: 3px dotted #2F3136;
+  }
 
+  .add-server:hover {
+    color: #DDDDDD;
+    border: 3px dotted #DDDDDD;
+    -webkit-transition: color 5s;
+    -webkit-transition: border 1s;
+  }
 
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background: white;
-  color: #7082E1;
-  width: 50%;
-  height: 50%;
-}
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: white;
+    color: #7082E1;
+    width: 500px;
+    height: 400px;
+    border-radius: 5px;
 
-.backdrop {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 9998;
-  background: rgba(0, 0, 0, 0.5);
+    h1 {
+      margin: 25px 0px;
+    }
+
+    P {
+      width: 300px;
+      text-align: center;
+      margin: 20px 100px;
+    }
+
+    .postServer {
+      height: 200px;
+
+      .postSubmit {
+        background-color: #7085DE;
+        width: 120px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        text-transform: capitalize;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .backdrop {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background: rgba(0, 0, 0, 0.5);
+  }
 }

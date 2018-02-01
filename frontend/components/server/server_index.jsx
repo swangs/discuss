@@ -61,6 +61,8 @@ class ServerIndex extends React.Component {
           isOpen={this.state.isModalOpen}
           onClose={() => this.closeModal()}
           />
+        <div className="divider"></div>
+        <br></br>
       </div>
     );
   }
