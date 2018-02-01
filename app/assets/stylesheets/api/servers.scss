@@ -11,20 +11,13 @@
   overflow-y: scroll;
 
   a {
-    background-color: #2F3136;
     color: #FFF9F2;
     width: 50px;
     height: 50px;
     line-height: 50px;
     text-align: center;
     text-decoration: none;
-    border-radius: 50px;
     margin: 10px 0px;
-  }
-
-  a:hover {
-    border-radius: 15px;
-    -webkit-transition: border-radius .5s
   }
 }
 
@@ -34,9 +27,44 @@
 }
 
 .me-button {
-
+  background-color: #7082E1;
+  border-radius: 15px;
 }
 
 .server-button{
+  background-color: #2F3136;
+  border-radius: 50px;
+}
 
+.server-button:hover {
+  border-radius: 15px;
+  -webkit-transition: border-radius .5s
+}
+
+.add-server {
+  border-radius: 50px;
+  border: 1px dotted #2F3136;
+}
+
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background: white;
+  color: #7082E1;
+  width: 50%;
+  height: 50%;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.5);
 }

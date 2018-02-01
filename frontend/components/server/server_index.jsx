@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AddServer from './add_server';
 
 class ServerIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isModalOpen: false };
+  }
 
   componentWillMount() {
     this.props.getServers();
@@ -13,16 +18,30 @@ class ServerIndex extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
-      let serverId = newProps.location.pathname.slice(1);
+      let serverId = newProps.location.pathname === "/@me" ?
+        newProps.currentUser.id :
+        newProps.location.pathname.slice(1);
       this.props.getServer(serverId);
     }
+  }
+  openModal() {
+    this.setState({ isModalOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false });
   }
 
   render() {
     let serverList;
     if (this.props.servers) {
       serverList = Object.values(this.props.servers).map(server => (
-        <Link className="server-button" to={`/${server.id}`}>{server.name[0]}</Link>
+        <Link
+          key={server.id}
+          className="server-button"
+          to={`/${server.id}`}>
+          {server.name[0]}
+        </Link>
       ));
     }
 
@@ -31,6 +50,16 @@ class ServerIndex extends React.Component {
         <Link className="me-button" to="/@me">@me</Link>
         <div className="divider"></div>
         {serverList}
+        <Link
+          onClick={() => this.openModal()}
+          className="add-server"
+          to={this.props.location.pathname}>
+          +
+        </Link>
+        <AddServer
+          isOpen={this.state.isModalOpen}
+          onClose={() => this.closeModal()}
+          />
       </div>
     );
   }
