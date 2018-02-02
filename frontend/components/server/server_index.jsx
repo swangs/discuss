@@ -25,7 +25,7 @@ class ServerIndex extends React.Component {
       this.props.getServer(serverId);
     }
   }
-  
+
   openModal() {
     this.setState({ isModalOpen: true });
   }

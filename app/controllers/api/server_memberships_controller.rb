@@ -2,7 +2,7 @@ class Api::ServerMembershipsController < ApplicationController
   before_action :require_logged_in
 
   def create
-    @server = Server.find_by(name: params[:name])
+    @server = Server.where(direct_message: false).find_by(name: params[:name])
     if @server
       @server_membership = ServerMembership.new(server_id: @server.id, user_id: current_user.id)
       if @server_membership.save
