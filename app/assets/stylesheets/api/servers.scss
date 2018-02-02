@@ -77,33 +77,56 @@
     transform: translate(-50%, -50%);
     z-index: 9999;
     background: white;
-    color: #7082E1;
-    width: 400px;
-    height: 400px;
+    width: 525px;
+    height: 425px;
     border-radius: 5px;
 
     h1 {
-      margin: 25px 0px;
+      color: #7082E1;
+      margin: 25px 0px 10px 0px;
+      padding-top: 15px;
       font-size: 18px;
       font-weight: 700;
     }
 
-    .postServer {
-      width: 250px;
-      height: 300px;
+    h2 {
+    }
+
+    .serverForm {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    form {
+      width: 225px;
+      height: 275px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
-      border: 1px solid #DDDDDD;
+      // justify-content: space-around;
+      border: 2px solid #DDDDDD;
       border-radius: 5px;
-      margin: auto;
+    }
 
-      P {
-        color: #9EAEB8;
+    .postServer {
+
+      h2 {
+        color: #7082E1;
+        margin: 10px 0px;
+      }
+
+      p {
+        color: #9CADB7;
         width: 200px;
         text-align: center;
+        margin: 10px 0px;
       }
+
+      label {
+        color: #7085DE;
+        margin-top: 100px;
+      }
+
 
       input {
         margin-left: 5px;
@@ -111,14 +134,52 @@
 
       .postSubmit {
         background-color: #7085DE;
-        width: 120px;
-        height: 30px;
+        width: 200px;
+        height: 50px;
         border: none;
         border-radius: 5px;
         text-transform: capitalize;
         color: white;
         font-size: 16px;
         font-weight: 600;
+        margin-top: 10px;
+      }
+    }
+
+    .joinServer {
+
+      h2 {
+        color: #40A476;
+        margin: 10px 0px;
+      }
+
+      p {
+        color: #9CADB7;
+        width: 200px;
+        text-align: center;
+        margin: 10px 0px;
+      }
+
+      label {
+        color: #40A476;
+        margin-top: 100px;
+      }
+
+      input {
+        margin-left: 5px;
+      }
+
+      .joinSubmit {
+        background-color: #40A476;
+        width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        text-transform: capitalize;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 10px;
       }
     }
   }
