@@ -52,8 +52,28 @@ class Prot extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { loading: true };
+    const LOADINGLINES = [
+      "Returning Discord Orb",
+      "Neutralizing Enemy Systems",
+      "Preparing Defenses",
+      "Reaching the Checkpoint",
+      "G'Day Mate",
+      "Sating the Dragon",
+      "Activating Defense Matrix",
+      "Opening the path",
+      "Some assembly required",
+      "Waiting around",
+      "Once more into the breach",
+      "Stretching before rigorous activity"
+    ];
+
+    this.state = {
+      loading: true,
+      loadingLine: LOADINGLINES[Math.floor(Math.random()*LOADINGLINES.length)]
+     };
   }
+
+
 
   componentWillMount() {
     let serverId;
@@ -64,7 +84,9 @@ class Prot extends React.Component {
           this.props.location.pathname.slice(1);
       })
       .then(() => this.props.getServer(serverId))
-      .then(() => (this.setState({ loading : false })));
+      .then(() => {
+        setTimeout(() => this.setState({ loading : false }), 2000);
+      });
   }
 
   render() {
@@ -72,10 +94,16 @@ class Prot extends React.Component {
       return <Redirect to="/login"/>;
     }
 
+
+
     if (this.state.loading) {
       return (
         <div className="loader-background">
-          <div className="loader">Loading...</div>
+          <h1 className="loader-text">
+            { this.state.loadingLine }
+          </h1>
+          <div className="loader">
+          </div>
         </div>
       );
     }
