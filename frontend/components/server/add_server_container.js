@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   postServer,
-  joinServer
+  joinServer,
  } from '../../actions/server_actions';
 import { withRouter } from 'react-router-dom';
 import AddServer from './add_server';

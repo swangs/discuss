@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import {
   getServers,
   getServer,
-  postServer
+  postServer,
+  clearErrors
  } from '../../actions/server_actions';
 import { withRouter } from 'react-router-dom';
 import ServerIndex from './server_index';
@@ -17,7 +18,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   getServers: () => dispatch(getServers()),
   getServer: (serverId) => dispatch(getServer(serverId)),
-  postServer: (formServer) => dispatch(postServer(formServer))
+  postServer: (formServer) => dispatch(postServer(formServer)),
+  clearErrors: () => dispatch(clearErrors()),
 });
 
 export default withRouter(connect(

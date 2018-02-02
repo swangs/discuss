@@ -28,6 +28,7 @@ class ServerIndex extends React.Component {
 
   openModal() {
     this.setState({ isModalOpen: true });
+    this.props.clearErrors();
   }
 
   closeModal() {
