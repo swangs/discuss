@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getServers: () => dispatch(getServers()),
-    getServer: () => dispatch(getServer()),
+    getServer: (serverId) => dispatch(getServer(serverId)),
   };
 };
 
@@ -56,7 +56,14 @@ class Prot extends React.Component {
   }
 
   componentWillMount() {
+    let serverId;
     this.props.getServers()
+      .then(() => {
+        serverId = this.props.location.pathname === "/@me" ?
+          this.props.currentUser.myServer :
+          this.props.location.pathname.slice(1);
+      })
+      .then(() => this.props.getServer(serverId))
       .then(() => (this.setState({ loading : false })));
   }
 

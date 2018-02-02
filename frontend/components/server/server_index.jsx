@@ -8,13 +8,13 @@ class ServerIndex extends React.Component {
     this.state = { isModalOpen: false };
   }
 
-  componentWillMount() {
-    this.props.getServers();
-    let serverId = this.props.location.pathname === "/@me" ?
-      this.props.currentUser.myServer :
-      this.props.location.pathname.slice(1);
-    this.props.getServer(serverId);
-  }
+  // componentWillMount() {
+  //   this.props.getServers();
+  //   let serverId = this.props.location.pathname === "/@me" ?
+  //     this.props.currentUser.myServer :
+  //     this.props.location.pathname.slice(1);
+  //   this.props.getServer(serverId);
+  // }
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
