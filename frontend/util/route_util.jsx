@@ -53,18 +53,24 @@ class Prot extends React.Component {
     super(props);
 
     const LOADINGLINES = [
-      "Returning Discord Orb",
+      "Returning Discuss Orb",
       "Neutralizing Enemy Systems",
       "Preparing Defenses",
       "Reaching the Checkpoint",
-      "G'Day Mate",
       "Sating the Dragon",
       "Activating Defense Matrix",
       "Opening the path",
       "Some assembly required",
       "Waiting around",
       "Once more into the breach",
-      "Stretching before rigorous activity"
+      "Stretching before rigorous activity",
+      "Repositioning",
+      "Traveling to...",
+      "Roses are red violets are blue Ryuu ga waga teki wo kurau!",
+      "Experiencing Tranquility",
+      "Cheers love, the servers are here!",
+      "lawk...",
+      "sheuuups",
     ];
 
     this.state = {
