@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     loggedIn: Boolean(state.session.currentUser),
+    currentServer: state.servers.currentServer,
     servers,
   };
 };
@@ -57,18 +58,23 @@ class Prot extends React.Component {
   // }
 
   render() {
-    let route;
-    if (!this.props.loggedIn) {
-      route = <Redirect to="/login"/>;
-    } else {
-      if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
-        route = <this.props.component {...this.props} />;
+    if (this.props.currentServer) {
+      let route;
+      if (!this.props.loggedIn) {
+        route = <Redirect to="/login"/>;
       } else {
-        route = <Redirect to="/@me" />;
+        if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
+          route = <this.props.component {...this.props} />;
+        } else {
+          route = <Redirect to="/@me" />;
+        }
       }
+      return (
+        route
+      );
     }
     return (
-      route
+      <this.props.component {...this.props} />
     );
   }
 }
