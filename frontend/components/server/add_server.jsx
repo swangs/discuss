@@ -84,6 +84,7 @@ class AddServer extends React.Component {
               </label>
               <input className="postSubmit" type="submit" value="Create a Server"></input>
             </form>
+            <div className="or">or</div>
             <form className="joinServer" onSubmit={this.handleSubmit("join")}>
               <h2>JOIN</h2>
               <p>Enter a Server Name and join your friend's server.</p>

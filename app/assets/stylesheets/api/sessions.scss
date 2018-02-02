@@ -98,4 +98,8 @@
   color: white;
   font-size: 16px;
   font-weight: 600;
+
+  &:hover {
+    background-color: darken(#7085DE, 5%);
+  }
 }
