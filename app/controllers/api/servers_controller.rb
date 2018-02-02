@@ -1,4 +1,5 @@
 class Api::ServersController < ApplicationController
+  before_action :require_logged_in
 
   def index
     @servers = current_user.servers.where(direct_message: false)

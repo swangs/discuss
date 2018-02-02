@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, withRouter } from 'react-router-dom';
+import { getServers } from '../actions/server_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let servers = ["@me"];
@@ -12,6 +13,12 @@ const mapStateToProps = (state, ownProps) => {
   return {
     loggedIn: Boolean(state.session.currentUser),
     servers,
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getServers: () => dispatch(getServers()),
   };
 };
 
@@ -39,6 +46,16 @@ export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
 class Prot extends React.Component {
 
+  // componentWillMount() {
+  //   this.props.getServers();
+  // }
+  //
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.location !== newProps.location) {
+  //     this.props.getServers();
+  //   }
+  // }
+
   render() {
     let route;
     if (!this.props.loggedIn) {
@@ -56,4 +73,4 @@ class Prot extends React.Component {
   }
 }
 
-export const ProtRoute = withRouter(connect(mapStateToProps)(Prot));
+export const ProtRoute = withRouter(connect(mapStateToProps, mapDispatchToProps)(Prot));

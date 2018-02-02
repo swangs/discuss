@@ -38,14 +38,14 @@ export const getServers = () => dispatch => {
 
 export const getServer = (serverId) => dispatch => {
   return ServerApiUtil.getServer(serverId).then(
-    currentServer => dispatch(receiveServer(currentServer)),
+    server => dispatch(receiveServer(server)),
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };
 
 export const postServer = (formServer) => dispatch => {
   return ServerApiUtil.postServer(formServer).then(
-    currentServer => dispatch(receiveServer(currentServer)),
+    server => dispatch(receiveServer(server)),
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };
@@ -53,6 +53,13 @@ export const postServer = (formServer) => dispatch => {
 export const deleteServer = (serverId) => dispatch => {
   return ServerApiUtil.deleteServer(serverId).then(
     servers => dispatch(receiveServers(servers)),
+    error => dispatch(receiveServerErrors(error.responseJSON))
+  );
+};
+
+export const joinServer = (serverName) => dispatch => {
+  return ServerApiUtil.joinServer(serverName).then(
+    server => dispatch(receiveServer(server)),
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };

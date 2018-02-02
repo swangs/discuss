@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
-  postServer
+  postServer,
+  joinServer
  } from '../../actions/server_actions';
 import { withRouter } from 'react-router-dom';
 import AddServer from './add_server';
@@ -10,7 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postServer: (formServer) => dispatch(postServer(formServer))
+  postServer: (formServer) => dispatch(postServer(formServer)),
+  joinServer: (serverName) => dispatch(joinServer(serverName)),
 });
 
 export default withRouter(connect(

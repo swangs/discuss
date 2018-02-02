@@ -27,8 +27,10 @@ export const deleteServer = (serverId) => {
   });
 };
 
-// export const joinServer = (serverId, userId) => {
-//   return $.ajax({
-//
-//   });
-// };
+export const joinServer = (serverName) => {
+  return $.ajax({
+    url: "api/server_memberships",
+    method: "POST",
+    data: serverName
+  });
+};
