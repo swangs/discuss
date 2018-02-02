@@ -75,7 +75,8 @@ class Prot extends React.Component {
 
     this.state = {
       loading: true,
-      loadingLine: LOADINGLINES[Math.floor(Math.random()*LOADINGLINES.length)]
+      loadingLine: LOADINGLINES[Math.floor(Math.random()*LOADINGLINES.length)],
+      errors: false,
      };
   }
 
@@ -90,17 +91,16 @@ class Prot extends React.Component {
           this.props.location.pathname.slice(1);
       })
       .then(() => this.props.getServer(serverId))
-      .then(() => {
-        setTimeout(() => this.setState({ loading : false }), 2000);
-      });
+      .then(
+        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 1500);},
+        error => this.setState({ loading: false, errors: true} )
+      );
   }
 
   render() {
     if (!this.props.loggedIn) {
       return <Redirect to="/login"/>;
     }
-
-
 
     if (this.state.loading) {
       return (
@@ -112,6 +112,10 @@ class Prot extends React.Component {
           </div>
         </div>
       );
+    }
+
+    if (this.state.errors) {
+      return <Redirect to="/login"/>;
     }
 
     let route;

@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 import ChannelIndex from './channel_index';
+import { logout } from '../../actions/session_actions';
+import { deleteServer } from '../../actions/server_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentServer: state.servers.currentServer,
@@ -10,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
+  deleteServer: (serverId) => dispatch(deleteServer(serverId)),
 });
 
 export default withRouter(connect(

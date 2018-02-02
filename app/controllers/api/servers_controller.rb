@@ -8,7 +8,11 @@ class Api::ServersController < ApplicationController
 
   def show
     @server = Server.find_by(id: params[:id])
-    render 'api/servers/show'
+    if @server
+      render 'api/servers/show'
+    else
+      render json: ["Server not Found"], status: 404
+    end
   end
 
   def create

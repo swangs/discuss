@@ -13,6 +13,7 @@
 class User < ApplicationRecord
   validates :username, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
+  validates :username, length: { maximum: 10 }
   validates :password, length: { minimum: 5, allow_nil: true }
 
   has_many :owned_servers,
