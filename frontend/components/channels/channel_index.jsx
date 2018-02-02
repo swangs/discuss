@@ -3,23 +3,28 @@ import { Link } from 'react-router-dom';
 
 class ChannelIndex extends React.Component {
 
+  deleteServer() {
+    return () => this.props.deleteServer(this.props.location.pathname.slice(1))
+      .then(() => this.props.getServers());
+  }
+
   render() {
-    console.log(this.props.currentServer);
-    console.log(this.props.currentUser);
+    let deleteButton = (
+      <button
+        onClick={this.deleteServer()}>
+        Delete Server
+      </button>
+    );
+
+    if (this.props.currentServer.owner_id !== this.props.currentUser.id || this.props.location.pathname === "/@me") {
+      deleteButton = null;
+    }
 
     return (
       <div className="channel-index">
         <h1>{this.props.currentServer.name}</h1>
         <br></br>
-        {
-          this.props.currentServer.owner_id === this.props.currentUser.id ?
-          <Link
-            to="@me"
-            onClick={() => this.props.deleteServer(this.props.location.pathname.slice(1))}>
-            Delete Server
-          </Link> :
-          null
-        }
+        {deleteButton}
         <ul>
         </ul>
         <br/><br/>

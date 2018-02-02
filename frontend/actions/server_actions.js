@@ -3,6 +3,7 @@ import * as ServerApiUtil from '../util/server_util';
 export const RECEIVE_ALL_SERVERS = "RECEIVE_ALL_SERVERS";
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVER_ERRORS = "RECEIVE_SERVER_ERRORS";
+export const REMOVE_SERVER = "REMOVE_SERVER";
 
 const receiveServers = (servers) => {
   return {
@@ -15,6 +16,13 @@ const receiveServer = (currentServer) => {
   return {
     type: RECEIVE_SERVER,
     currentServer
+  };
+};
+
+const removeServer = (serverId) => {
+  return {
+    type: REMOVE_SERVER,
+    serverId,
   };
 };
 
@@ -52,7 +60,7 @@ export const postServer = (formServer) => dispatch => {
 
 export const deleteServer = (serverId) => dispatch => {
   return ServerApiUtil.deleteServer(serverId).then(
-    servers => dispatch(receiveServers(servers)),
+    server => dispatch(removeServer(serverId)),
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };

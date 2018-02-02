@@ -1,6 +1,7 @@
 import {
   RECEIVE_ALL_SERVERS,
-  RECEIVE_SERVER
+  RECEIVE_SERVER,
+  REMOVE_SERVER
 } from '../actions/server_actions';
 import { LOGOUT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
@@ -21,6 +22,10 @@ const serverReducer = (oldState = _nullServer, action) => {
     case RECEIVE_SERVER:
       const currentServer = action.currentServer;
       newState = merge({}, oldState, { currentServer });
+      return newState;
+    case REMOVE_SERVER:
+      newState = merge({}, oldState);
+      delete newState.servers[parseInt(action.serverId)];
       return newState;
     case LOGOUT_USER:
       return _nullServer;

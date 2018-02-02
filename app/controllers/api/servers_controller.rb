@@ -31,16 +31,16 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
-    @server = Server.find_by(id: params[:id])
-    if current_user && @server.owner_id === current_user.id
-      if @server
+    @server = Server.where(direct_message: false).find_by(id: params[:id])
+    if @server
+      if current_user && @server.owner_id === current_user.id
         @server.delete
         render json: {}
       else
-        render json: ["Server does not Exist"], status: 404
+        render json: ["You cannot delete this server"], status: 404
       end
     else
-      render json: ["You cannot delete this server"], status: 404
+      render json: ["Server does not Exist"], status: 404
     end
   end
 
