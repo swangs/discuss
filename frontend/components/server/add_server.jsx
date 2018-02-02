@@ -74,28 +74,28 @@ class AddServer extends React.Component {
             <form className="postServer" onSubmit={this.handleSubmit("create")}>
               <h2>CREATE</h2>
               <p>Create a new server and invite your friends.  Its free!</p>
-              <label>Name
-                <input
-                  type="text"
-                  value={this.state.name}
-                  onChange={this.handleInput("create")}
-                  >
-                </input>
-              </label>
+              <div className="server-icon"></div>
+              <input
+                type="text"
+                placeholder="enter a server name"
+                value={this.state.name}
+                onChange={this.handleInput("create")}
+                >
+              </input>
               <input className="postSubmit" type="submit" value="Create a Server"></input>
             </form>
             <div className="or">or</div>
             <form className="joinServer" onSubmit={this.handleSubmit("join")}>
               <h2>JOIN</h2>
               <p>Enter a Server Name and join your friend's server.</p>
-              <label>Name
-                <input
-                  type="text"
-                  value={this.state.name}
-                  onChange={this.handleInput("join")}
-                  >
-                </input>
-              </label>
+              <div className="server-icon"></div>
+              <input
+                type="text"
+                placeholder="enter a server name"
+                value={this.state.name}
+                onChange={this.handleInput("join")}
+                >
+              </input>
               <input className="joinSubmit" type="submit" value="Join a Server"></input>
             </form>
           </div>
