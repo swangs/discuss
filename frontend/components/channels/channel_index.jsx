@@ -5,19 +5,32 @@ class ChannelIndex extends React.Component {
 
   deleteServer() {
     return () => this.props.deleteServer(this.props.location.pathname.slice(1))
-      .then(() => this.props.getServers());
+      .then(() => this.props.history.push(`/@me`));
   }
 
-  render() {
-    let deleteButton = (
-      <button
-        onClick={this.deleteServer()}>
-        Delete Server
-      </button>
-    );
+  componentWillReceiveProps(newProps) {
+    if (this.props.location !== newProps.location) {
+      let serverId = newProps.location.pathname === "/@me" ?
+        newProps.currentUser.myServer :
+        newProps.location.pathname.slice(1);
+      this.props.getServer(serverId);
+    }
+  }
 
-    if (this.props.currentServer.owner_id !== this.props.currentUser.id || this.props.location.pathname === "/@me") {
+
+
+  render() {
+    let deleteButton = null;
+    if (this.props.location.pathname === "/@me") {
       deleteButton = null;
+    } else if (this.props.currentServer.owner_id === this.props.currentUser.id) {
+      deleteButton = (
+        <button
+          className="delete-server-button"
+          onClick={this.deleteServer()}>
+          Delete Server
+        </button>
+      );
     }
 
     return (
