@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, withRouter } from 'react-router-dom';
-import { getServers } from '../actions/server_actions';
+import { getServers, getServer } from '../actions/server_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let servers = ["@me"];
@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     loggedIn: Boolean(state.session.currentUser),
+    currentUser: state.session.currentUser,
     currentServer: state.servers.currentServer,
     servers,
   };
@@ -20,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getServers: () => dispatch(getServers()),
+    getServer: () => dispatch(getServer()),
   };
 };
 
@@ -47,35 +49,37 @@ export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
 class Prot extends React.Component {
 
-  // componentWillMount() {
-  //   this.props.getServers();
-  // }
-  //
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.location !== newProps.location) {
-  //     this.props.getServers();
-  //   }
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = { loading: true };
+  }
+
+  componentWillMount() {
+    this.props.getServers()
+      .then(() => (this.setState({ loading : false })));
+  }
 
   render() {
-    if (this.props.currentServer) {
-      let route;
-      if (!this.props.loggedIn) {
-        route = <Redirect to="/login"/>;
-      } else {
-        if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
-          route = <this.props.component {...this.props} />;
-        } else {
-          route = <Redirect to="/@me" />;
-        }
-      }
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login"/>;
+    }
+
+    if (this.state.loading) {
       return (
-        route
+        <div className="loader-background">
+          <div className="loader">Loading...</div>
+        </div>
       );
     }
-    return (
-      <this.props.component {...this.props} />
-    );
+
+    let route;
+    if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
+      route = <this.props.component {...this.props} />;
+    } else {
+      route = <Redirect to="/@me" />;
+    }
+    return route;
   }
 }
 

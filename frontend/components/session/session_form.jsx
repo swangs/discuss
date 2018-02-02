@@ -11,8 +11,10 @@
     };
   }
 
-  componentDidMount(){
-    this.props.clearErrors();
+  componentWillReceiveProps(newProps) {
+    if (this.props.location !== newProps.location) {
+      this.props.clearErrors();
+    }
   }
 
   handleInput(type) {

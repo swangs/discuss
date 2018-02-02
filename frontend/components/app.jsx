@@ -10,7 +10,6 @@ const App = () => (
     <Route exact path="/" component={SplashContainer} />
     <AuthRoute path="/login" component={SessionFormContainer} />
     <AuthRoute path="/register" component={SessionFormContainer} />
-    <ProtRoute path="/@me" component={Server} />
     <ProtRoute path="/:serverId" component={Server} />
   </Switch>
 );

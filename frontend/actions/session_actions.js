@@ -2,7 +2,7 @@ import * as SessionApiUtil from '../util/session_util';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const LOGOUT_USER = "LOGOUT_USER"
+export const LOGOUT_USER = "LOGOUT_USER";
 
 const receiveCurrentUser = (currentUser) => {
   return {
