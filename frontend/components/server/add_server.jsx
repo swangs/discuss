@@ -37,13 +37,18 @@ class AddServer extends React.Component {
   handleSubmit(type) {
     return (e) => {
       e.preventDefault();
+      let serverId;
       if (type === "create") {
         this.props.postServer(this.state.create)
-        .then(response => this.props.history.push(`/${response.currentServer.id}`))
+        .then(response => { serverId = response.currentServer.id; })
+        .then(() => this.props.getServers())
+        .then(() => this.props.history.push(`/${serverId}`))
         .then(() => this.props.onClose());
       } else {
         this.props.joinServer(this.state.join)
-        .then(response => this.props.history.push(`/${response.currentServer.id}`))
+        .then(response => { serverId = response.currentServer.id; })
+        .then(() => this.props.getServers())
+        .then(() => this.props.history.push(`/${serverId}`))
         .then(() => this.props.onClose());
       }
     };
