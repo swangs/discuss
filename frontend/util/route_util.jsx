@@ -92,7 +92,7 @@ class Prot extends React.Component {
       })
       .then(() => this.props.getServer(serverId))
       .then(
-        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 1500);},
+        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 100);},
         error => this.setState({ loading: false, errors: true} )
       );
   }
@@ -119,6 +119,7 @@ class Prot extends React.Component {
     }
 
     let route;
+    console.log(this.props);
     if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
       route = <this.props.component {...this.props} />;
     } else {

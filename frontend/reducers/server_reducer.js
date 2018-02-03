@@ -21,7 +21,8 @@ const serverReducer = (oldState = _nullServer, action) => {
       return newState;
     case RECEIVE_SERVER:
       const currentServer = action.currentServer;
-      newState = merge({}, oldState, { currentServer });
+      newState = merge({}, oldState);
+      newState.currentServer = currentServer;
       return newState;
     case REMOVE_SERVER:
       newState = merge({}, oldState);
