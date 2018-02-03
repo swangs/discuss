@@ -5,6 +5,7 @@ class ChannelIndex extends React.Component {
 
   deleteServer() {
     return () => this.props.deleteServer(this.props.currentServer.id)
+      .then(() => this.props.getServers())
       .then(() => this.props.getServer(this.props.currentUser.myServer))
       .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
