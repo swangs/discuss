@@ -98,7 +98,7 @@ class Prot extends React.Component {
       })
       .then(() => this.props.getServer(serverId))
       .then(
-        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 100);},
+        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 2000);},
         error => this.setState({ loading: false, errors: true} )
       );
   }
@@ -123,7 +123,7 @@ class Prot extends React.Component {
     if (this.state.errors) {
       return <Redirect to="/login"/>;
     }
-
+    console.log(this.props);
     if (this.props.path === "/:serverId/:channelId") {
       let route;
       let servers = this.props.servers;
@@ -131,7 +131,7 @@ class Prot extends React.Component {
       if (servers.includes(this.props.currentServer.id.toString())) {
         route = <this.props.component {...this.props} />;
       } else {
-        route = <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
+        route = <Redirect to={`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`} />;
       }
       return route;
     } else {
