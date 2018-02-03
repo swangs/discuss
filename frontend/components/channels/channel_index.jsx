@@ -48,7 +48,7 @@ class ChannelIndex extends React.Component {
         <NavLink
           key={channel.id}
           className="channel-button"
-          to={`/${this.props.currentServer.id}/ ${channel.id}`}>
+          to={`/${this.props.currentServer.id}/${channel.id}`}>
           {channel.name}
         </NavLink>
       ));
