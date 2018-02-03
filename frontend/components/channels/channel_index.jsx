@@ -4,8 +4,9 @@ import { Link, NavLink } from 'react-router-dom';
 class ChannelIndex extends React.Component {
 
   deleteServer() {
-    return () => this.props.deleteServer(this.props.location.pathname.slice(1))
-      .then(() => this.props.history.push(`/@me`));
+    return () => this.props.deleteServer(this.props.currentServer.id)
+      .then(() => this.props.getServer(this.props.currentUser.myServer))
+      .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
 
   componentWillReceiveProps(newProps) {

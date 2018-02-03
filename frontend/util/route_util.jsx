@@ -128,6 +128,8 @@ class Prot extends React.Component {
       let route;
       let servers = this.props.servers;
       this.props.servers.push(this.props.currentUser.myServer.toString());
+      console.log(servers);
+      console.log(this.props.currentServer.id);
       if (servers.includes(this.props.currentServer.id.toString())) {
         route = <this.props.component {...this.props} />;
       } else {
