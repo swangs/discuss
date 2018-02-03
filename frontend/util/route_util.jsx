@@ -123,23 +123,33 @@ class Prot extends React.Component {
     if (this.state.errors) {
       return <Redirect to="/login"/>;
     }
+
     console.log(this.props);
-    if (this.props.path === "/:serverId/:channelId") {
-      let route;
-      let servers = this.props.servers;
-      this.props.servers.push(this.props.currentUser.myServer.toString());
-      console.log(servers);
-      console.log(this.props.currentServer.id);
-      if (servers.includes(this.props.currentServer.id.toString())) {
-        route = <this.props.component {...this.props} />;
-      } else {
-        route = <Redirect to={`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`} />;
-      }
-      return route;
+    let route;
+    let servers = this.props.servers;
+    this.props.servers.push(this.props.currentUser.myServer.toString());
+    console.log(servers);
+    console.log(this.props.currentServer.id);
+    if (servers.includes(this.props.currentServer.id.toString())) {
+      route = <this.props.component {...this.props} />;
     } else {
-      return <Redirect to={`/${this.props.currentServer.id}/${this.props.currentServer.channels[0].id}`} />;
+      route = <Redirect to={`/@me`} />;
     }
+    return route;
   }
 }
 
 export const ProtRoute = withRouter(connect(mapStateToProps, mapDispatchToProps)(Prot));
+
+class ServerProt extends React.Component {
+
+  render() {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login"/>;
+    } else {
+      return <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
+    }
+  }
+}
+
+export const ServerProtRoute = withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerProt));
