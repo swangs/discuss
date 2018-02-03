@@ -21,7 +21,7 @@ class ChannelIndex extends React.Component {
 
   render() {
     let deleteButton = null;
-    if (this.props.location.pathname === "/@me") {
+    if (this.props.currentServer.id === this.props.currentUser.myServer) {
       deleteButton = null;
     } else if (this.props.currentServer.owner_id === this.props.currentUser.id) {
       deleteButton = (
