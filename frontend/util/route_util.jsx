@@ -119,7 +119,6 @@ class Prot extends React.Component {
     }
 
     let route;
-    console.log(this.props);
     if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
       route = <this.props.component {...this.props} />;
     } else {

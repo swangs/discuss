@@ -17,10 +17,10 @@ class Api::ChannelsController < ApplicationController
 
   def create
     if signed_in?
-      @channel = Channel.new(server_params)
+      @channel = Channel.new(channel_params)
       @channel.server_id = params[:server_id]
       if @channel.save
-        render 'api/channel/show'
+        render 'api/channels/show'
       else
         render json: @channel.errors.full_messages, status: 422
       end

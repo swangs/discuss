@@ -33,6 +33,17 @@ Server.create(name: "user5Server", owner_id: 8, direct_message: true)
 Server.create(name: "user6Server", owner_id: 9, direct_message: true)
 Server.create(name: "user7Server", owner_id: 10, direct_message: true)
 
+Channel.create(name: "#general", server_id: 1)
+Channel.create(name: "#general", server_id: 2)
+Channel.create(name: "#general", server_id: 3)
+Channel.create(name: "#general", server_id: 4)
+Channel.create(name: "#general", server_id: 5)
+Channel.create(name: "#general", server_id: 6)
+Channel.create(name: "#general", server_id: 7)
+Channel.create(name: "#general", server_id: 8)
+Channel.create(name: "#general", server_id: 9)
+Channel.create(name: "#general", server_id: 10)
+
 
 ServerMembership.create(server_id: 1, user_id: 1)
 ServerMembership.create(server_id: 2, user_id: 2)
@@ -49,6 +60,17 @@ ServerMembership.create(server_id: 10, user_id: 10)
 Server.create(name: "Demo Server", owner_id: 1)
 Server.create(name: "App Academy", owner_id: 1)
 Server.create(name: "Chat", owner_id: 1)
+
+Channel.create(name: "#general", server_id: 11)
+Channel.create(name: "#welcome to discuss", server_id: 11)
+
+Channel.create(name: "#general", server_id: 12)
+Channel.create(name: "#assessment prep", server_id: 12)
+Channel.create(name: "#circle time", server_id: 12)
+
+Channel.create(name: "#general", server_id: 13)
+Channel.create(name: "#chat about everything", server_id: 13)
+
 
 ServerMembership.create(server_id: 11, user_id: 1)
 ServerMembership.create(server_id: 12, user_id: 1)
