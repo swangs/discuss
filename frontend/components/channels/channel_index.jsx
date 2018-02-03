@@ -10,9 +10,16 @@ class ChannelIndex extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
-      let serverId = newProps.location.pathname === "/@me" ?
+      let serverId = newProps.location.pathname;
+      serverId = serverId.slice(1);
+      let index = serverId.indexOf('/');
+      if (index < 0) {
+        index = serverId.length;
+      }
+      serverId = serverId.slice(0, index);
+      serverId = newProps.location.pathname.includes("/@me") ?
         newProps.currentUser.myServer :
-        newProps.location.pathname.slice(1);
+        serverId;
       this.props.getServer(serverId);
     }
   }

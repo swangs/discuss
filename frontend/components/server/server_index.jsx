@@ -30,7 +30,7 @@ class ServerIndex extends React.Component {
         <NavLink
           key={server.id}
           className="server-button"
-          to={`/${server.id}`}>
+          to={`/${server.id}/${server.channels[0].id}`}>
           {server.name[0]}
         </NavLink>
       ));

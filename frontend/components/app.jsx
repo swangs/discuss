@@ -8,9 +8,9 @@ import Server from './server/server';
 const App = () => (
   <Switch>
     <Route exact path="/" component={SplashContainer} />
-    <AuthRoute path="/login" component={SessionFormContainer} />
-    <AuthRoute path="/register" component={SessionFormContainer} />
-    <ProtRoute exact path="/:serverId" component={Server} />
+    <AuthRoute exact path="/login" component={SessionFormContainer} />
+    <AuthRoute exact path="/register" component={SessionFormContainer} />
+    <ProtRoute exact path="/:serverId/" component={Server} />
     <ProtRoute path="/:serverId/:channelId" component={Server} />
   </Switch>
 );

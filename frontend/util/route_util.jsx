@@ -4,7 +4,7 @@ import { Redirect, Route, withRouter } from 'react-router-dom';
 import { getServers, getServer } from '../actions/server_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let servers = ["@me"];
+  let servers = [];
   if (state.session.currentUser && state.servers.servers) {
     Object.keys(state.servers.servers).map(serverId => {
       servers.push(serverId);
@@ -30,7 +30,7 @@ const Auth = ({ loggedIn, path, exact, component: Component }) => (
     path={path}
     exact={exact}
     render={props => (
-      loggedIn ? <Redirect to="/@me" /> : <Component {...props} />
+      loggedIn ? <Redirect to="/@me/" /> : <Component {...props} />
     )}
   />
 );
@@ -83,12 +83,18 @@ class Prot extends React.Component {
 
 
   componentWillMount() {
-    let serverId;
+    let serverId = this.props.location.pathname;
+    serverId = serverId.slice(1);
+    let index = serverId.indexOf('/');
+    if (index < 0) {
+      index = serverId.length;
+    }
+    serverId = serverId.slice(0, index);
     this.props.getServers()
       .then(() => {
-        serverId = this.props.location.pathname === "/@me" ?
+        serverId = this.props.location.pathname.includes("/@me") ?
           this.props.currentUser.myServer :
-          this.props.location.pathname.slice(1);
+          serverId;
       })
       .then(() => this.props.getServer(serverId))
       .then(
@@ -118,13 +124,19 @@ class Prot extends React.Component {
       return <Redirect to="/login"/>;
     }
 
-    let route;
-    if (this.props.servers.includes(this.props.location.pathname.slice(1))) {
-      route = <this.props.component {...this.props} />;
+    if (this.props.path === "/:serverId/:channelId") {
+      let route;
+      let servers = this.props.servers;
+      this.props.servers.push(this.props.currentUser.myServer.toString());
+      if (servers.includes(this.props.currentServer.id.toString())) {
+        route = <this.props.component {...this.props} />;
+      } else {
+        route = <Redirect to={`/@me/${this.props.currentUser.myServer}`} />;
+      }
+      return route;
     } else {
-      route = <Redirect to="/@me" />;
+      return <Redirect to={`/${this.props.currentServer.id}/${this.props.currentServer.channels[0].id}`} />;
     }
-    return route;
   }
 }
 

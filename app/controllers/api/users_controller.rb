@@ -9,6 +9,7 @@ class Api::UsersController < ApplicationController
         direct_message: true
       )
       ServerMembership.create(server_id: server.id, user_id: @user.id)
+      Channel.create(name: "Welcome", server_id: "server.id")
       sign_in(@user)
       render 'api/users/show'
     else

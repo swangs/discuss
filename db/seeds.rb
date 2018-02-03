@@ -21,7 +21,6 @@ User.create(username: "user5", password: "password")
 User.create(username: "user6", password: "password")
 User.create(username: "user7", password: "password")
 
-
 Server.create(name: "discussBOTServer", owner_id: 1, direct_message: true)
 Server.create(name: "swangoServer", owner_id: 2, direct_message: true)
 Server.create(name: "demouserServer", owner_id: 3, direct_message: true)
@@ -32,6 +31,18 @@ Server.create(name: "user4Server", owner_id: 7, direct_message: true)
 Server.create(name: "user5Server", owner_id: 8, direct_message: true)
 Server.create(name: "user6Server", owner_id: 9, direct_message: true)
 Server.create(name: "user7Server", owner_id: 10, direct_message: true)
+
+Channel.create(name: "#Welcome", server_id: 1)
+Channel.create(name: "#Welcome", server_id: 2)
+Channel.create(name: "#Welcome", server_id: 3)
+Channel.create(name: "#Welcome", server_id: 4)
+Channel.create(name: "#Welcome", server_id: 5)
+Channel.create(name: "#Welcome", server_id: 6)
+Channel.create(name: "#Welcome", server_id: 7)
+Channel.create(name: "#Welcome", server_id: 8)
+Channel.create(name: "#Welcome", server_id: 9)
+Channel.create(name: "#Welcome", server_id: 10)
+
 
 ServerMembership.create(server_id: 1, user_id: 1)
 ServerMembership.create(server_id: 2, user_id: 2)
