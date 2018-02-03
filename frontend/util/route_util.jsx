@@ -131,7 +131,7 @@ class Prot extends React.Component {
       if (servers.includes(this.props.currentServer.id.toString())) {
         route = <this.props.component {...this.props} />;
       } else {
-        route = <Redirect to={`/@me/${this.props.currentUser.myServer}`} />;
+        route = <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
       }
       return route;
     } else {
