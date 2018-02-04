@@ -44,6 +44,17 @@ Channel.create(name: "Welcome to Discuss", server_id: 8)
 Channel.create(name: "Welcome to Discuss", server_id: 9)
 Channel.create(name: "Welcome to Discuss", server_id: 10)
 
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 1)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 2)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 3)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 4)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 5)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 6)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 7)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 8)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 9)
+Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 10)
+
 
 ServerMembership.create(server_id: 1, user_id: 1)
 ServerMembership.create(server_id: 2, user_id: 2)

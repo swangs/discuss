@@ -10,14 +10,17 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+class Message < ApplicationRecord
+  validates :content, :author, :channel, presence: true
 
-one:
-  content: MyText
-  author_id: 1
-  server_id: 1
+  belongs_to :author,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :User
 
-two:
-  content: MyText
-  author_id: 1
-  server_id: 1
+  belongs_to :channel
+
+  after_create_commit do
+    ChatMessageCreationEventBroadcastJob.perform_later(self)
+  end
+end

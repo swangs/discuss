@@ -26,6 +26,11 @@ class User < ApplicationRecord
   has_many :servers,
   through: :server_memberships
 
+  has_many :messages,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Message
+
   after_initialize :ensure_session_token
 
   attr_reader :password
