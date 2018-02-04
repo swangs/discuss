@@ -10,7 +10,8 @@ class Messages extends React.Component {
       currentChatMessage: '',
       currentChannel: this.props.currentChannel.id,
       currentUser: this.props.currentUser.id,
-      chatLogs: this.props.currentChannel.messages
+      chatLogs: this.props.currentChannel.messages,
+      refresh: true
     };
   }
 
@@ -46,15 +47,14 @@ class Messages extends React.Component {
 
 
   createSocket() {
-    let cable = Cable.createConsumer('ws://localhost:3000/cable');
+    let cable = Cable.createConsumer();
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
       connected: () => {},
       received: (data) => {
-        let chatLogs = this.state.chatLogs;
-        chatLogs.push(data);
-        this.setState({ chatLogs: chatLogs });
+        this.props.getChannel(this.props.currentChannel.id)
+          .then(() => this.setState({ chatLogs: this.props.currentChannel.messages }));
       },
       create: function(chatContent) {
         this.perform('create', {
@@ -89,6 +89,7 @@ class Messages extends React.Component {
     return this.state.chatLogs.map((el) => {
       return (
         <li key={`chat_${el.id}`}>
+          <span className='chat-author'>{ el.created_at }</span>
           <span className='chat-message'>{ el.content }</span>
           <span className='chat-created-at'>{ el.created_at }</span>
         </li>
