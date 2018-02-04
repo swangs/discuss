@@ -5,7 +5,7 @@ import Cable from 'actioncable';
 class Messages extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.currentChannel.messages);
+
     this.state = {
       currentChatMessage: '',
       currentChannel: this.props.currentChannel.id,
@@ -16,6 +16,32 @@ class Messages extends React.Component {
 
   componentWillMount() {
     this.createSocket();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.location !== newProps.location) {
+      let serverId = newProps.location.pathname;
+      serverId = serverId.slice(1);
+      let index = serverId.indexOf('/');
+      if (index < 0) {
+        index = serverId.length;
+      }
+      let channelId = serverId.slice(index + 1);
+      serverId = serverId.slice(0, index);
+      serverId = newProps.location.pathname.includes("/@me") ?
+        newProps.currentUser.myServer :
+        serverId;
+      this.props.getServer(serverId)
+        .then(() => this.props.getChannel(channelId))
+        .then(() => (
+          this.setState({
+            currentChatMessage: '',
+            currentChannel: this.props.currentChannel.id,
+            currentUser: this.props.currentUser.id,
+            chatLogs: this.props.currentChannel.messages
+          })
+        ));
+    }
   }
 
 

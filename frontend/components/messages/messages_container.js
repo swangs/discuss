@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { getServer } from '../../actions/server_actions';
 import { withRouter } from 'react-router-dom';
 import Messages from './messages';
+import { getServer } from '../../actions/server_actions';
+import { getChannel } from '../../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser,
@@ -10,6 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getServer: (serverId) => dispatch(getServer(serverId)),
+  getChannel: (channelId) => dispatch(getChannel(channelId)),
 });
 
 export default withRouter(connect(
