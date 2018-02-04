@@ -19,6 +19,7 @@ class Api::ChannelsController < ApplicationController
     if signed_in?
       @channel = Channel.new(channel_params)
       @channel.server_id = params[:server_id]
+      @channel.name = "# #{@channel.name}"
       if @channel.save
         render 'api/channels/show'
       else

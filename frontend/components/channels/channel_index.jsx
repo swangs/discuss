@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+
 class ChannelIndex extends React.Component {
 
   deleteServer() {
@@ -28,7 +29,9 @@ class ChannelIndex extends React.Component {
     }
   }
 
-
+  toggleDropdown() {
+    document.getElementById("channel-dropdown").classList.toggle("show");
+  }
 
   render() {
     let deleteButton = null;
@@ -56,20 +59,43 @@ class ChannelIndex extends React.Component {
       ));
     }
 
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropdown')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    };
+
     return (
       <div className="channel-index">
-        <h1>{this.props.currentServer.name}</h1>
-        <br></br>
-        {deleteButton}
-        <br></br>
-        <br></br>
-        <ul>
+
+        <div
+          onClick={() => this.toggleDropdown()}
+          className="dropdown">
+            <p>{this.props.currentServer.name}</p>
+            <p>+</p>
+          <div id="channel-dropdown" className="dropdown-content">
+            <p>Options</p>
+            {deleteButton}
+          </div>
+        </div>
+
+
+        <ul className="channel-list">
           {channelList}
         </ul>
-        <br/><br/>
-        <h1>{this.props.currentUser.username}</h1>
-        <br></br>
-        <Link to='/' onClick={this.props.logout}>Logout</Link>
+
+        <div className="user-info">
+          <p>{this.props.currentUser.username}</p>
+          <Link to='/' onClick={this.props.logout}>Logout</Link>
+        </div>
 
       </div>
     );

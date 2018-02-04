@@ -72,15 +72,15 @@ Server.create(name: "Demo Server", owner_id: 1)
 Server.create(name: "App Academy", owner_id: 1)
 Server.create(name: "Chat", owner_id: 1)
 
-Channel.create(name: "#general", server_id: 11)
-Channel.create(name: "#welcome to discuss", server_id: 11)
+Channel.create(name: "# general", server_id: 11)
+Channel.create(name: "# welcome to discuss", server_id: 11)
 
-Channel.create(name: "#general", server_id: 12)
-Channel.create(name: "#assessment prep", server_id: 12)
-Channel.create(name: "#circle time", server_id: 12)
+Channel.create(name: "# general", server_id: 12)
+Channel.create(name: "# assessment prep", server_id: 12)
+Channel.create(name: "# circle time", server_id: 12)
 
-Channel.create(name: "#general", server_id: 13)
-Channel.create(name: "#chat about everything", server_id: 13)
+Channel.create(name: "# general", server_id: 13)
+Channel.create(name: "# chat about everything", server_id: 13)
 
 
 ServerMembership.create(server_id: 11, user_id: 1)

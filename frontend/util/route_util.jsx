@@ -105,7 +105,7 @@ class Prot extends React.Component {
       .then(() => this.props.getChannels(serverId))
       .then(() => this.props.getChannel(channelId))
       .then(
-        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 2000);},
+        () => {setTimeout(() => this.setState({ loading: false, errors: false }), 100);},
         error => this.setState({ loading: false, errors: true} )
       );
   }
