@@ -1,3 +1,5 @@
 @channels.each do |channel|
-  json.extract! channel, :id, :name
+  json.set! channel.id do
+    json.extract! channel, :id, :name
+  end
 end

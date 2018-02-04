@@ -4,14 +4,11 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //TESTING
-import { getPublicServers,
-  getServer,
-  postServer,
-  deleteServer} from './util/server_util';
-window.getPublicServers = getPublicServers;
-window.getServer = getServer;
-window.postServer = postServer;
-window.deleteServer = deleteServer;
+import { getChannels, getChannel, postChannel, deleteChannel} from './util/channel_util';
+window.getChannels = getChannels;
+window.getChannel = getChannel;
+window.deleteChannel = deleteChannel;
+window.postChannel = postChannel;
 //TESTING
 
 document.addEventListener('DOMContentLoaded', () => {
