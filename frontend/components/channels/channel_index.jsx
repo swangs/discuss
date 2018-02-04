@@ -18,11 +18,13 @@ class ChannelIndex extends React.Component {
       if (index < 0) {
         index = serverId.length;
       }
+      let channelId = serverId.slice(index + 1);
       serverId = serverId.slice(0, index);
       serverId = newProps.location.pathname.includes("/@me") ?
         newProps.currentUser.myServer :
         serverId;
       this.props.getServer(serverId);
+      this.props.getChannel(channelId);
     }
   }
 

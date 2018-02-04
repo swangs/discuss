@@ -92,7 +92,7 @@ class Prot extends React.Component {
     if (index < 0) {
       index = serverId.length;
     }
-    let channelId = serverId.slice(index+1);
+    let channelId = serverId.slice(index + 1);
     serverId = serverId.slice(0, index);
     console.log(serverId);
     console.log(channelId);
