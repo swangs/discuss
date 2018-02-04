@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 import { getServers, getServer } from '../actions/server_actions';
+import { getChannels, getChannel } from '../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let servers = [];
@@ -22,6 +23,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getServers: () => dispatch(getServers()),
     getServer: (serverId) => dispatch(getServer(serverId)),
+    getChannels: (serverId) => dispatch(getChannels(serverId)),
+    getChannel: (channelId) => dispatch(getChannel(channelId)),
   };
 };
 
@@ -89,7 +92,10 @@ class Prot extends React.Component {
     if (index < 0) {
       index = serverId.length;
     }
+    let channelId = serverId.slice(index+1);
     serverId = serverId.slice(0, index);
+    console.log(serverId);
+    console.log(channelId);
     this.props.getServers()
       .then(() => {
         serverId = this.props.location.pathname.includes("/@me") ?
@@ -97,6 +103,8 @@ class Prot extends React.Component {
           serverId;
       })
       .then(() => this.props.getServer(serverId))
+      .then(() => this.props.getChannels(serverId))
+      .then(() => this.props.getChannel(channelId))
       .then(
         () => {setTimeout(() => this.setState({ loading: false, errors: false }), 2000);},
         error => this.setState({ loading: false, errors: true} )

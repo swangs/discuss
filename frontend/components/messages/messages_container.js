@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom';
 import Messages from './messages';
 
 const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.session.currentUser,
   currentServer: state.servers.currentServer,
-  currentUser: state.session.currentUser
+  currentChannel: state.channels.currentChannel,
 });
 
 const mapDispatchToProps = dispatch => ({
