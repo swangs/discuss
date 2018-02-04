@@ -8,6 +8,7 @@
 
 User.delete_all
 Server.delete_all
+Channel.delete_all
 
 # Users and UserServers
 User.create(username: "discussBOT", password: "master")

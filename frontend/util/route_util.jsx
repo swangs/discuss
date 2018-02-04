@@ -72,6 +72,7 @@ class Prot extends React.Component {
       "Roses are red violets are blue Ryuu ga waga teki wo kurau!",
       "Experiencing Tranquility",
       "Cheers love, the servers are here!",
+      "Caaan do!",
       "lawk...",
       "sheuuups",
     ];
@@ -94,8 +95,6 @@ class Prot extends React.Component {
     }
     let channelId = serverId.slice(index + 1);
     serverId = serverId.slice(0, index);
-    console.log(serverId);
-    console.log(channelId);
     this.props.getServers()
       .then(() => {
         serverId = this.props.location.pathname.includes("/@me") ?
