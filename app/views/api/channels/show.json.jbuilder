@@ -1,4 +1,10 @@
 json.extract! @channel, :id, :name
 json.set! :messages do
-  json.array! @channel.messages, :id, :content, :author_id, :created_at
+  # json.array! @channel.messages, :id, :content, :author_id, :created_at
+  json.array! @channel.messages do |message|
+    json.id message.id
+    json.content message.content
+    json.author message.author.username
+    json.created_at message.created_at
+  end
 end

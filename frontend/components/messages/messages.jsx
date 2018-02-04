@@ -89,9 +89,12 @@ class Messages extends React.Component {
     return this.state.chatLogs.map((el) => {
       return (
         <li key={`chat_${el.id}`}>
-          <span className='chat-author'>{ el.created_at }</span>
+          <br></br>
+          <span className='chat-author'>{ el.author }: </span>
           <span className='chat-message'>{ el.content }</span>
+          <br></br>
           <span className='chat-created-at'>{ el.created_at }</span>
+          <br></br>
         </li>
       );
     });
