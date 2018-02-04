@@ -12,6 +12,7 @@
 
 class Message < ApplicationRecord
   validates :content, :author, :channel, presence: true
+  validates :content, length: { minimum: 1 } 
 
   belongs_to :author,
   primary_key: :id,

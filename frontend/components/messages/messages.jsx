@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cable from 'actioncable';
+import ActionCable from 'actioncable';
 
 class Messages extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class Messages extends React.Component {
 
 
   createSocket() {
-    let cable = Cable.createConsumer();
+    let cable = ActionCable.createConsumer();
     this.chats = cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
@@ -86,14 +86,17 @@ class Messages extends React.Component {
     });
   }
   renderChatLog() {
-    return this.state.chatLogs.map((el) => {
+    return this.state.chatLogs.map((message) => {
+      const date = new Date(message.created_at);
+      const timestamp = `${date.toDateString()} at ${date.toLocaleTimeString()}`;
+
       return (
-        <li key={`chat_${el.id}`}>
+        <li key={`chat_${message.id}`}>
           <br></br>
-          <span className='chat-author'>{ el.author }: </span>
-          <span className='chat-message'>{ el.content }</span>
+          <span className='chat-author'>{ message.author }: </span>
+          <span className='chat-message'>{ message.content }</span>
           <br></br>
-          <span className='chat-created-at'>{ el.created_at }</span>
+          <span className='chat-created-at'>{ timestamp }</span>
           <br></br>
         </li>
       );
