@@ -53,11 +53,12 @@ class Messages extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
-        console.log(this.props.currentChannel.id);
+        console.log("receive success");
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.currentChannel.messages }));
       },
       create: function(chatContent) {
+        console.log("send success");
         this.perform('create', {
           content: chatContent.currentChatMessage,
           author_id: chatContent.currentUser,
@@ -89,12 +90,13 @@ class Messages extends React.Component {
   renderChatLog() {
     const log = this.state.chatLogs.slice().reverse();
     return log.map((message) => {
-      const date = new Date(message.created_at);
-      const timestamp = `${date.toLocaleTimeString()}`;
+      const timestamp = new Date(message.created_at);
+      const date = `${timestamp.toLocaleDateString()}`;
+      const time = `${timestamp.toLocaleTimeString()}`;
 
       return (
         <li className="message" key={`chat_${message.id}`}>
-          <div className='chat-created-at'>{ timestamp }</div>
+          <div className='chat-created-at'>{ date } { time }</div>
           <div className='chat-author'>{ message.author }: </div>
           <div className='chat-message'>{ message.content }</div>
         </li>
@@ -134,9 +136,3 @@ class Messages extends React.Component {
 }
 
 export default Messages;
-
-// <button
-//   onClick={ (e) => this.handleSendEvent(e) }
-//   className='send'>
-//   Send
-// </button>
