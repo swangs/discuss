@@ -60,8 +60,7 @@ class ChannelIndex extends React.Component {
     }
 
     window.onclick = function(event) {
-      if (!event.target.matches('.dropdown')) {
-
+      if (!event.target.matches('.dropdown') && !event.target.matches('.dropdown-p')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
@@ -75,28 +74,23 @@ class ChannelIndex extends React.Component {
 
     return (
       <div className="channel-index">
-
         <div
           onClick={() => this.toggleDropdown()}
           className="dropdown">
-            <p>{this.props.currentServer.name}</p>
-            <p>+</p>
+            <p className="dropdown-p">{this.props.currentServer.name}</p>
+            <p className="dropdown-p">+</p>
           <div id="channel-dropdown" className="dropdown-content">
             <p>Options</p>
             {deleteButton}
           </div>
         </div>
-
-
         <ul className="channel-list">
           {channelList}
         </ul>
-
         <div className="user-info">
           <p>{this.props.currentUser.username}</p>
           <Link to='/' onClick={this.props.logout}>Logout</Link>
         </div>
-
       </div>
     );
   }
