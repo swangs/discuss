@@ -11,6 +11,7 @@ class ChannelDropdown extends React.Component {
   }
 
   toggleDropdown() {
+
     document.getElementById("channel-dropdown").classList.toggle("show");
     document.getElementById("cog").classList.toggle("fa-spin");
   }
@@ -38,13 +39,19 @@ class ChannelDropdown extends React.Component {
       );
     } else {
       return (
-        <div
-          onClick={() => this.toggleDropdown()}
-          className="dropdown">
-          <p className="dropdown-p">{this.props.currentServer.name}</p>
-          <i id="cog" className="fas fa-cog"></i>
+        <div>
+          <div
+            onClick={() => this.toggleDropdown()}
+            className="dropdown">
+            <p className="dropdown-p">{this.props.currentServer.name}</p>
+            <i id="cog" className="fas fa-cog"></i>
+          </div>
           <div id="channel-dropdown" className="dropdown-content">
-            <p>Options</p>
+            <p>Server Options</p>
+            <input
+              className="add-channel-input"
+              placeholder="Add Channel">
+            </input>
             {deleteButton}
           </div>
         </div>

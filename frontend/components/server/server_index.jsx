@@ -55,7 +55,7 @@ class ServerIndex extends React.Component {
           onClick={() => this.openModal()}
           className="add-server"
           to={this.props.location.pathname}>
-          +
+          <i className="fas fa-plus"></i>
         </Link>
         <AddServerContainer
           isOpen={this.state.isModalOpen}

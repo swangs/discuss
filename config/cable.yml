@@ -1,5 +1,5 @@
 development:
-  url: async
+  adapter: async
 
 test:
   adapter: async

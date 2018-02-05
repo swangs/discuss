@@ -70,42 +70,51 @@
       margin: auto 15px;;
     }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 55px;
-      left: 150px;
-      background-color: #f1f1f1;
-      min-width: 150px;
-      border-radius: 5px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 2;
+  }
 
-      p {
-        display: block;
-        text-align: center;
-        color: black;
-        margin: 5px auto;
-      }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 55px;
+    left: 150px;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
 
-      .delete-server-button {
-        color: red;
-        background: none;
-        border: 1px solid red;
-        margin: 15px auto;
-        display: block;
-        cursor: pointer;
-        border: none;
-
-        &:hover {
-          background-color: #ddd;
-        }
-      }
+    p {
+      color: #7082E1;
+      font-weight: 700;
+      display: block;
+      text-align: center;
+      color: black;
+      margin: 5px auto;
     }
 
-    .show {
-      display:block;
+    .add-channel-input {
+      width: 80%;
+      margin: 10px 7.5%;
+
     }
+
+    .delete-server-button {
+      color: red;
+      background: none;
+      border: 1px solid red;
+      margin: 5px auto;
+      display: block;
+      cursor: pointer;
+      border: 1px solid red;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  .show {
+    display:block;
   }
 
   .user-info {

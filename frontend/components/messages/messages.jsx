@@ -114,7 +114,7 @@ class Messages extends React.Component {
     return (
       <div className="messages">
         <nav className="messages-nav">
-          <p>{this.props.currentChannel.name}</p>
+          <p><i className="fas fa-hashtag"></i> {this.props.currentChannel.name}</p>
           <div className="swang-links">
             <a href='https://github.com/swangs/discuss'>
               <i className="fab fa-github fa-2x"></i>
@@ -132,7 +132,7 @@ class Messages extends React.Component {
               <div className="input-box">
                 <input
                   type='text'
-                  placeholder={`Message ${this.props.currentChannel.name}`}
+                  placeholder={`Message #${this.props.currentChannel.name}`}
                   className='chat-input'
                   value={ this.state.currentChatMessage }
                   onKeyPress={ (e) => this.handleChatInputKeyPress(e) }

@@ -32,13 +32,17 @@ class ChannelIndex extends React.Component {
           key={channel.id}
           className="channel-button"
           to={`/${this.props.currentServer.id}/${channel.id}`}>
-          {channel.name}
+          <i className="fas fa-hashtag"></i> {channel.name}
         </NavLink>
       ));
     }
 
     window.onclick = function(event) {
-      if (!event.target.matches('.dropdown') && !event.target.matches('.dropdown-p') && !event.target.matches('.fa-cog')) {
+      // console.log(!event.target.matches('.dropdown'));
+      if (!event.target.matches('.dropdown')
+        && !event.target.matches('.dropdown-p')
+        && !event.target.matches('.fa-cog')
+        && !event.target.matches('.add-channel-input')) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
         for (var i = 0; i < dropdowns.length; i++) {
           let openDropdown = dropdowns[i];
