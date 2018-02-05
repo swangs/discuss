@@ -3,6 +3,9 @@ import {
   RECEIVE_CHANNEL,
   REMOVE_CHANNEL
 } from '../actions/channel_actions';
+import {
+  RECEIVE_SERVER,
+} from '../actions/server_actions';
 import { LOGOUT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
@@ -14,10 +17,17 @@ const _nullChannel = {
 const channelReducer = (oldState = _nullChannel, action) => {
   Object.freeze(oldState);
   let newState;
+  let channels;
   switch (action.type) {
+    case RECEIVE_SERVER:
+      channels = action.currentServer.channels;
+      newState = merge({}, oldState);
+      newState.channels = channels;
+      return newState;
     case RECEIVE_ALL_CHANNELS:
-      const channels = action.channels;
-      newState = merge({}, oldState, { channels });
+      channels = Object.values(action.channels);
+      newState = merge({}, oldState);
+      newState.channels = channels;
       return newState;
     case RECEIVE_CHANNEL:
       const currentChannel = action.currentChannel;

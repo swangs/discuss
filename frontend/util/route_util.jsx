@@ -11,11 +11,19 @@ const mapStateToProps = (state, ownProps) => {
       servers.push(serverId);
     });
   }
+  let channels = [];
+  if (state.channels.channels) {
+    state.channels.channels.map(channel => {
+      channels.push(channel.id);
+    });
+  }
   return {
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
     currentServer: state.servers.currentServer,
+    currentChannel: state.channels.currentChannel,
     servers,
+    channels,
   };
 };
 
