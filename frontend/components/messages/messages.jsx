@@ -92,6 +92,7 @@ class Messages extends React.Component {
       currentChatMessage: ''
     });
   }
+
   renderChatLog() {
     const log = this.state.chatLogs.slice().reverse();
     return log.map((message) => {

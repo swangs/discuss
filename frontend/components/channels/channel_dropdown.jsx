@@ -2,6 +2,13 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 class ChannelDropdown extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+    };
+  }
 
   deleteServer() {
     return () => this.props.deleteServer(this.props.currentServer.id)
@@ -11,9 +18,34 @@ class ChannelDropdown extends React.Component {
   }
 
   toggleDropdown() {
-
     document.getElementById("channel-dropdown").classList.toggle("show");
     document.getElementById("cog").classList.toggle("fa-spin");
+    this.setState({ name: ''} );
+  }
+
+  updateNewChannel(event) {
+    this.setState({
+      name: event.target.value
+    });
+  }
+
+  handleChatInputKeyPress(event) {
+    if(event.key === 'Enter') {
+      this.handleSendEvent(event);
+    }
+  }
+
+  handleSendEvent(event) {
+    event.preventDefault();
+    const serverId = this.props.currentServer.id;
+    let channel;
+    this.props.postChannel(serverId, this.state)
+    .then(response => {channel = response.currentChannel; })
+    .then(() => this.props.getServers())
+    .then(() => this.props.getServer(`${serverId}`))
+    .then(() => this.props.getChannel(channel.id))
+    .then(() => this.props.history.push(`/${serverId}/${channel.id}`))
+    .then(() => this.toggleDropdown());
   }
 
   render() {
@@ -49,8 +81,12 @@ class ChannelDropdown extends React.Component {
           <div id="channel-dropdown" className="dropdown-content">
             <p>Server Options</p>
             <input
+              type="text"
               className="add-channel-input"
-              placeholder="Add Channel">
+              placeholder="Add Channel"
+              value={ this.state.name }
+              onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
+              onChange={ (e) => this.updateNewChannel(e) }>
             </input>
             {deleteButton}
           </div>

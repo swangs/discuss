@@ -52,7 +52,7 @@ export const getChannel = (channelId) => dispatch => {
 };
 
 export const postChannel = (channelId, formChannel) => dispatch => {
-  return ChannelApiUtil.postServer(channelId, formChannel).then(
+  return ChannelApiUtil.postChannel(channelId, formChannel).then(
     channel => dispatch(receiveChannel(channel)),
     error => dispatch(receiveChannelErrors(error.responseJSON))
   );
