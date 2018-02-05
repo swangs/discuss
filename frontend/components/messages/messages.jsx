@@ -18,6 +18,9 @@ class Messages extends React.Component {
   componentWillMount() {
     this.createSocket();
   }
+  componentWillUnmount() {
+    this.deleteSocket();
+  }
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
@@ -47,12 +50,13 @@ class Messages extends React.Component {
 
 
   createSocket() {
-    let cable = ActionCable.createConsumer();
-    this.chats = cable.subscriptions.create({
+    this.cable = ActionCable.createConsumer();
+    this.chats = this.cable.subscriptions.create({
       channel: 'ChatChannel'
     }, {
       connected: () => {},
       received: (data) => {
+        console.log(this.props);
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.messages }));
       },
@@ -64,6 +68,10 @@ class Messages extends React.Component {
         });
       }
     });
+  }
+
+  deleteSocket() {
+    this.cable.subscriptions.remove(this.chats);
   }
 
   updateCurrentChatMessage(event) {
