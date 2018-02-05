@@ -53,12 +53,10 @@ class Messages extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
-        console.log("receive success");
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.messages }));
       },
       create: function(chatContent) {
-        console.log("send success");
         this.perform('create', {
           content: chatContent.currentChatMessage,
           author_id: chatContent.currentUser,

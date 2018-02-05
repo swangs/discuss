@@ -8,7 +8,6 @@ class Api::ServerMembershipsController < ApplicationController
       if @server_membership.save
         render 'api/servers/show'
       else
-        # render json: @server_membership.errors.full_messages, status: 422
         render json: ["You are already in this server"], status: 422
       end
     else
