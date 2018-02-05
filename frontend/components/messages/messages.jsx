@@ -10,7 +10,7 @@ class Messages extends React.Component {
       currentChatMessage: '',
       currentChannel: this.props.currentChannel.id,
       currentUser: this.props.currentUser.id,
-      chatLogs: this.props.currentChannel.messages,
+      chatLogs: this.props.messages,
       refresh: true
     };
   }
@@ -39,7 +39,7 @@ class Messages extends React.Component {
             currentChatMessage: '',
             currentChannel: this.props.currentChannel.id,
             currentUser: this.props.currentUser.id,
-            chatLogs: this.props.currentChannel.messages
+            chatLogs: this.props.messages
           })
         ));
     }
@@ -55,7 +55,7 @@ class Messages extends React.Component {
       received: (data) => {
         console.log("receive success");
         this.props.getChannel(this.props.currentChannel.id)
-          .then(() => this.setState({ chatLogs: this.props.currentChannel.messages }));
+          .then(() => this.setState({ chatLogs: this.props.messages }));
       },
       create: function(chatContent) {
         console.log("send success");

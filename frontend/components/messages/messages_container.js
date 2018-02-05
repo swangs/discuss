@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser,
   currentServer: state.servers.currentServer,
   currentChannel: state.channels.currentChannel,
+  messages: state.messages.messages
 });
 
 const mapDispatchToProps = dispatch => ({
