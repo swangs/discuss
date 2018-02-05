@@ -53,6 +53,7 @@ class Messages extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
+        console.log(this.props.currentChannel.id);
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.currentChannel.messages }));
       },
@@ -89,7 +90,7 @@ class Messages extends React.Component {
     const log = this.state.chatLogs.slice().reverse();
     return log.map((message) => {
       const date = new Date(message.created_at);
-      const timestamp = `${date.toDateString()}${date.toLocaleTimeString()}`;
+      const timestamp = `${date.toLocaleTimeString()}`;
 
       return (
         <li className="message" key={`chat_${message.id}`}>
