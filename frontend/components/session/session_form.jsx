@@ -61,6 +61,7 @@
       <div id="session">
         <div className="auth-box">
           <div className="auth-logo">
+            <div className="logo"></div>
             <h1><Link to="/">DISCUSS</Link></h1>
           </div>
           <div className="auth-container">

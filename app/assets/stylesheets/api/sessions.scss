@@ -25,6 +25,15 @@
   padding: 30px;
   border-radius: 5px 0px 0px 5px;
 
+  .logo {
+    background-image: asset-url('discusslogo.png');
+    background-position: contain;
+    background-repeat: no-repeat;
+    width: 155px;
+    height: 155px;
+    margin: 40px 0px;
+  }
+
   a {
     text-decoration: none;
     font-size: 35px;
