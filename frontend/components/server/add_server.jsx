@@ -47,7 +47,7 @@ class AddServer extends React.Component {
         .then(() => this.props.onClose());
       } else {
         this.props.joinServer(this.state.join)
-        .then(response => { server = response.currentServer.id; })
+        .then(response => { server = response.currentServer; })
         .then(() => this.props.getServers())
         .then(() => this.props.getServer(`${server.id}`))
         .then(() => this.props.history.push(`/${server.id}/${server.channels[0].id}`))
