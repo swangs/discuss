@@ -109,27 +109,22 @@ class Messages extends React.Component {
     return (
       <div className="messages">
         <nav className="messages-nav">
-          <div className='App'>
-            <div className='stage'>
-              <h1>Chat</h1>
-              <div className='chat-logs'>
-                { this.renderChatLog() }
-              </div>
+          <p>{this.props.currentChannel.name}</p>
+        </nav>
+          <div className='message-display'>
+            <div className='chat-logs'>
+              { this.renderChatLog() }
+            </div>
+            <div className="chat-form">
               <input
                 type='text'
-                placeholder='Enter your message...'
+                placeholder={`Message ${this.props.currentChannel.name}`}
                 className='chat-input'
                 value={ this.state.currentChatMessage }
                 onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
                 onChange={ (e) => this.updateCurrentChatMessage(e) }/>
-              <button
-                onClick={ (e) => this.handleSendEvent(e) }
-                className='send'>
-                Send
-              </button>
             </div>
           </div>
-        </nav>
         <div className="messages-body">
         </div>
       </div>
@@ -138,3 +133,9 @@ class Messages extends React.Component {
 }
 
 export default Messages;
+
+// <button
+//   onClick={ (e) => this.handleSendEvent(e) }
+//   className='send'>
+//   Send
+// </button>
