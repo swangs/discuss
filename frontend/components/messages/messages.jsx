@@ -97,7 +97,7 @@ class Messages extends React.Component {
       return (
         <li className="message" key={`chat_${message.id}`}>
           <div className='chat-created-at'>{ date } { time }</div>
-          <div className='chat-author'>{ message.author }: </div>
+          <div className='chat-author'>{ message.author }</div>
           <div className='chat-message'>{ message.content }</div>
         </li>
       );
@@ -110,6 +110,14 @@ class Messages extends React.Component {
       <div className="messages">
         <nav className="messages-nav">
           <p>{this.props.currentChannel.name}</p>
+          <div className="swang-links">
+            <a href='https://github.com/swangs'>
+              <i className="fab fa-github fa-2x"></i>
+            </a>
+            <a href='https://www.linkedin.com/in/s-wang/'>
+              <i className="fab fa-linkedin fa-2x"></i>
+            </a>
+          </div>
         </nav>
           <div className='message-display'>
             <div className='chat-logs'>

@@ -28,7 +28,12 @@
   }
 
   .me-button {
+    background-image: asset-url('me.svg');
+    background-size: 35px 35px;
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 10px 0px;
+    font-size: 0px;
   }
 
   .server-button{
