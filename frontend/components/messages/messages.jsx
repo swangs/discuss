@@ -53,7 +53,6 @@ class Messages extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
-        console.log(this.props.currentChannel.id);
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.currentChannel.messages }));
       },
@@ -87,18 +86,16 @@ class Messages extends React.Component {
     });
   }
   renderChatLog() {
-    return this.state.chatLogs.map((message) => {
+    const log = this.state.chatLogs.slice().reverse();
+    return log.map((message) => {
       const date = new Date(message.created_at);
-      const timestamp = `${date.toDateString()} at ${date.toLocaleTimeString()}`;
+      const timestamp = `${date.toDateString()}${date.toLocaleTimeString()}`;
 
       return (
-        <li key={`chat_${message.id}`}>
-          <br></br>
-          <span className='chat-author'>{ message.author }: </span>
-          <span className='chat-message'>{ message.content }</span>
-          <br></br>
-          <span className='chat-created-at'>{ timestamp }</span>
-          <br></br>
+        <li className="message" key={`chat_${message.id}`}>
+          <div className='chat-created-at'>{ timestamp }</div>
+          <div className='chat-author'>{ message.author }: </div>
+          <div className='chat-message'>{ message.content }</div>
         </li>
       );
     });
@@ -116,13 +113,16 @@ class Messages extends React.Component {
               { this.renderChatLog() }
             </div>
             <div className="chat-form">
-              <input
-                type='text'
-                placeholder={`Message ${this.props.currentChannel.name}`}
-                className='chat-input'
-                value={ this.state.currentChatMessage }
-                onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
-                onChange={ (e) => this.updateCurrentChatMessage(e) }/>
+              <div className="input-box">
+                <input
+                  type='text'
+                  placeholder={`Message ${this.props.currentChannel.name}`}
+                  className='chat-input'
+                  value={ this.state.currentChatMessage }
+                  onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
+                  onChange={ (e) => this.updateCurrentChatMessage(e) }>
+                </input>
+              </div>
             </div>
           </div>
         <div className="messages-body">
