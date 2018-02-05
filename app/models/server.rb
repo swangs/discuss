@@ -24,5 +24,5 @@ class Server < ApplicationRecord
   has_many :users,
   through: :server_memberships
 
-  has_many :channels
+  has_many :channels, dependent: :destroy
 end

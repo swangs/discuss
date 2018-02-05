@@ -1,10 +1,10 @@
 development:
-  adapter: async
+  url: async
 
 test:
   adapter: async
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
-  channel_prefix: discuss_production
+  url: redis://redistogo:b3b48726316373fc2297bd1f171449af@soldierfish.redistogo.com:11003/
+  channel_prefix: Dissonance_production
