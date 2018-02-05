@@ -56,7 +56,6 @@ class Messages extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
-        console.log(this.props);
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.messages }));
       },

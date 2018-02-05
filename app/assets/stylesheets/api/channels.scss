@@ -36,6 +36,23 @@
     }
   }
 
+  .user-header {
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #222429;
+
+    p{
+      display: block;
+      margin: auto 15px;;
+    }
+
+    i{
+      display: block;
+      margin: auto 15px;;
+    }
+  }
+
   .dropdown {
     min-height: 50px;
     cursor: pointer;

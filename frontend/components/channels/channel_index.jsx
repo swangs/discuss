@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import ChannelDropdownContainer from './channel_dropdown_container';
 
 
 class ChannelIndex extends React.Component {
-
-  deleteServer() {
-    return () => this.props.deleteServer(this.props.currentServer.id)
-      .then(() => this.props.getServers())
-      .then(() => this.props.getServer(this.props.currentUser.myServer))
-      .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
-  }
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
@@ -29,24 +23,7 @@ class ChannelIndex extends React.Component {
     }
   }
 
-  toggleDropdown() {
-    document.getElementById("channel-dropdown").classList.toggle("show");
-    document.getElementById("cog").classList.toggle("fa-spin");
-  }
-
   render() {
-    let deleteButton = null;
-    if (this.props.currentServer.id === this.props.currentUser.myServer) {
-      deleteButton = null;
-    } else if (this.props.currentServer.owner_id === this.props.currentUser.id) {
-      deleteButton = (
-        <button
-          className="delete-server-button"
-          onClick={this.deleteServer()}>
-          Delete Server
-        </button>
-      );
-    }
 
     let channelList;
     if (this.props.currentServer.channels) {
@@ -81,16 +58,7 @@ class ChannelIndex extends React.Component {
 
     return (
       <div className="channel-index">
-        <div
-          onClick={() => this.toggleDropdown()}
-          className="dropdown">
-            <p className="dropdown-p">{this.props.currentServer.name}</p>
-            <i id="cog" className="fas fa-cog"></i>
-          <div id="channel-dropdown" className="dropdown-content">
-            <p>Options</p>
-            {deleteButton}
-          </div>
-        </div>
+        <ChannelDropdownContainer />
         <ul className="channel-list">
           {channelList}
         </ul>
