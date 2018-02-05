@@ -31,6 +31,7 @@ class ChannelIndex extends React.Component {
 
   toggleDropdown() {
     document.getElementById("channel-dropdown").classList.toggle("show");
+    document.getElementById("cog").classList.toggle("fa-spin");
   }
 
   render() {
@@ -60,13 +61,19 @@ class ChannelIndex extends React.Component {
     }
 
     window.onclick = function(event) {
-      if (!event.target.matches('.dropdown') && !event.target.matches('.dropdown-p')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
+      if (!event.target.matches('.dropdown') && !event.target.matches('.dropdown-p') && !event.target.matches('.fa-cog')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
           if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
+          }
+        }
+        let cog = document.getElementsByClassName("fa-cog");
+        for (var j = 0; j < cog.length; j++) {
+          let spinningCog = cog[j];
+          if (spinningCog.classList.contains('fa-spin')) {
+            spinningCog.classList.remove('fa-spin');
           }
         }
       }
@@ -78,7 +85,7 @@ class ChannelIndex extends React.Component {
           onClick={() => this.toggleDropdown()}
           className="dropdown">
             <p className="dropdown-p">{this.props.currentServer.name}</p>
-            <p className="dropdown-p">+</p>
+            <i id="cog" className="fas fa-cog"></i>
           <div id="channel-dropdown" className="dropdown-content">
             <p>Options</p>
             {deleteButton}
@@ -89,7 +96,7 @@ class ChannelIndex extends React.Component {
         </ul>
         <div className="user-info">
           <p>{this.props.currentUser.username}</p>
-          <Link to='/' onClick={this.props.logout}>Logout</Link>
+          <Link className='logout' to='/' onClick={this.props.logout}>Logout</Link>
         </div>
       </div>
     );

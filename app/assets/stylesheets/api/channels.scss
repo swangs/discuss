@@ -48,6 +48,11 @@
       margin: auto 15px;;
     }
 
+    i{
+      display: block;
+      margin: auto 15px;;
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
@@ -97,7 +102,7 @@
       margin: auto 15px;;
     }
 
-    a {
+    .logout {
       display: block;
       margin: auto 15px;;
       height: 20px;
@@ -107,6 +112,10 @@
       border: 1px solid red;
       border-radius: 5px;
       text-decoration: none;
+
+      &:hover {
+        box-shadow: 0 0 5px 5px maroon;
+      }
     }
   }
 
