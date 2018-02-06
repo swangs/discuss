@@ -31,10 +31,21 @@
 
     .chat-logs {
       height: calc(100% - 75px);
-      width: 90%;
+      width: 95%;
       overflow-y: scroll;
       display: flex;
       flex-direction: column-reverse;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        background: #2F3137;
+        border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #1E2125;
+        border-radius: 20px;
+      }
 
       .message {
         border-top: 1px solid #484B53;
@@ -61,7 +72,7 @@
     .chat-form {
       border-top: 1px solid #484B53;
       min-height: 75px;
-      width: 90%;
+      width: 95%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -85,7 +96,6 @@
           font-weight: 400;
         }
       }
-
     }
   }
 }

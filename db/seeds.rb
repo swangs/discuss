@@ -11,7 +11,8 @@ Server.delete_all
 Channel.delete_all
 Message.delete_all
 
-# Users and UserServers
+# Users
+
 User.create(username: "discussBOT", password: "master")
 User.create(username: "swango", password: "master")
 User.create(username: "demo", password: "demopassword")
@@ -62,17 +63,17 @@ ServerMembership.create(server_id: 4, user_id: 4)
 ServerMembership.create(server_id: 5, user_id: 5)
 
 # Public Servers
-Server.create(name: "Demo Server", owner_id: 1)
-Server.create(name: "App Academy", owner_id: 1)
-Server.create(name: "Chat", owner_id: 1)
 
+Server.create(name: "Demo Server", owner_id: 1)
 Channel.create(name: "general", server_id: 6)
 Channel.create(name: "discuss public channel", server_id: 6)
 
+Server.create(name: "App Academy", owner_id: 1)
 Channel.create(name: "general", server_id: 7)
 Channel.create(name: "assessment prep", server_id: 7)
 Channel.create(name: "circle time", server_id: 7)
 
+Server.create(name: "Chat", owner_id: 1)
 Channel.create(name: "general", server_id: 8)
 Channel.create(name: "chat about everything", server_id: 8)
 
@@ -80,7 +81,7 @@ Channel.create(name: "chat about everything", server_id: 8)
 ServerMembership.create(server_id: 6, user_id: 1)
 ServerMembership.create(server_id: 7, user_id: 1)
 ServerMembership.create(server_id: 8, user_id: 1)
-ServerMembership.create(server_id: 5, user_id: 2)
+ServerMembership.create(server_id: 6, user_id: 2)
 ServerMembership.create(server_id: 7, user_id: 2)
 ServerMembership.create(server_id: 8, user_id: 2)
 ServerMembership.create(server_id: 6, user_id: 3)

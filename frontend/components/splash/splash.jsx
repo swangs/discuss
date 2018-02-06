@@ -26,12 +26,12 @@ class Splash extends React.Component {
           {splashSession}
           <div className='splash-nav-left'>
             <div className='splash-logo'></div>
-            <h1>DISCUSS</h1>
+            <h1>ĐISCUSS</h1>
           </div>
         </div>
         <div className='splash-text'>
-          <h1 className='splash-h1'>It's time to ditch Skype and TeamSpeak.</h1>
-          <p className="splash-p">A live chat app clone of Discord, Discuss is built with react/redux frontend and rails backend. Seamlessly chat in real time with group or private channels.</p>
+          <h1 className='splash-h1'>It's time to ditch Discord, Skype, and TeamSpeak.</h1>
+          <p className="splash-p">A live chat app cloned from Discord, Discuss is built with react-redux frontend and rails backend. Seamlessly chat in real time with group or private channels.</p>
         </div>
       </div>
 

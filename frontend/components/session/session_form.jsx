@@ -62,7 +62,7 @@
         <div className="auth-box">
           <div className="auth-logo">
             <div className="logo"></div>
-            <h1><Link to="/">DISCUSS</Link></h1>
+            <h1><Link to="/">ĐISCUSS</Link></h1>
           </div>
           <div className="auth-container">
             <h1>{header}</h1>
