@@ -23,6 +23,13 @@ class ChannelIndex extends React.Component {
     }
   }
 
+  deleteChannel(channelId) {
+    return () => this.props.deleteChannel(channelId)
+      // .then(() => this.props.getServers())
+      .then(() => this.props.getServer(this.props.currentServer.id))
+      .then(() => this.props.history.push(`/${this.props.currentServer.id}/${this.props.currentServer.channels[0].id}`));
+  }
+
   render() {
 
     let channelList;
@@ -37,14 +44,27 @@ class ChannelIndex extends React.Component {
             </NavLink>
           ));
       } else {
-        channelList = this.props.currentServer.channels.map(channel => (
-          <NavLink
-            key={channel.id}
-            className="channel-button"
-            to={`/${this.props.currentServer.id}/${channel.id}`}>
-            <i className="fas fa-hashtag"></i> {channel.name}
-            </NavLink>
-          ));
+        let deleteChannel = null;
+        channelList = this.props.currentServer.channels.map(channel => {
+          if (this.props.currentServer.owner_id === this.props.currentUser.id
+            && this.props.currentServer.channels.length > 1) {
+              deleteChannel = (
+                <button
+                  className="remove-channel-button"
+                  onClick={this.deleteChannel(channel.id)}>
+                  <i className="fas fa-times"></i>
+                </button>
+              );
+            }
+            return (
+              <NavLink
+                key={channel.id}
+                className="channel-button"
+                to={`/${this.props.currentServer.id}/${channel.id}`}>
+                <i className="fas fa-hashtag"></i> { channel.name } { deleteChannel }
+                </NavLink>
+            );
+          });
       }
     }
 

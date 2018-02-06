@@ -15,7 +15,7 @@
     overflow-y: scroll;
     align-items: center;
 
-    a {
+    .channel-button {
       color: white;
       text-decoration: none;
       font-size: 14px;
@@ -24,10 +24,32 @@
       margin: 5px 0px;
       border-radius: 5px;
       word-wrap: break-word;
+
+      .remove-channel-button {
+        display: none;
+      }
     }
 
     .active {
       background-color: #42464E;
+
+      .remove-channel-button {
+        display: block;
+        float: right;
+        background: none;
+        border: none;
+        color: white;
+        align-self: flex-end;
+
+        &:hover {
+          cursor: pointer;
+          color: red;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
 
     &::-webkit-scrollbar {
