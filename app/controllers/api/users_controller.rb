@@ -9,9 +9,9 @@ class Api::UsersController < ApplicationController
         direct_message: true
       )
       ServerMembership.create(server_id: server.id, user_id: @user.id)
-      ServerMembership.create(server_id: 11, user_id: @user.id)
-      ServerMembership.create(server_id: 12, user_id: @user.id)
-      ServerMembership.create(server_id: 13, user_id: @user.id)
+      ServerMembership.create(server_id: 6, user_id: @user.id)
+      ServerMembership.create(server_id: 7, user_id: @user.id)
+      ServerMembership.create(server_id: 8, user_id: @user.id)
       channel = Channel.create(name: "Welcome to Discuss", server_id: server.id)
       Message.create(content: "Welcome to Discuss!", channel_id: channel.id, author_id: 1)
       Message.create(content: "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .", channel_id: channel.id, author_id: 1)
