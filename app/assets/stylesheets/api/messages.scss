@@ -15,10 +15,10 @@
 
     .swang-links {
       margin: auto;
-      margin-right: 5%;
+      margin-right: 40px;
 
       a{
-        margin: 0px 15px;
+        margin: 0px 25px;
 
         &:hover {
           color: #7082E1;
@@ -34,10 +34,9 @@
 
   .message-display {
     height: 100%;
-    width: calc(100% - 240px);
+    width: 100%;
     display: flex;
     flex-direction: column;
-    // align-items: center;
 
     .chat-logs {
       height: calc(100% - 75px);

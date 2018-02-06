@@ -121,6 +121,15 @@ class Messages extends React.Component {
       return <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
     }
 
+    let userIndex = null;
+    if (this.props.currentServer.id !== this.props.currentUser.myServer) {
+      userIndex = (
+        <div className="messages-users">
+          USERS
+        </div>
+      );
+    }
+
     return (
       <div className="messages">
         <nav className="messages-nav">
@@ -153,9 +162,7 @@ class Messages extends React.Component {
               </div>
             </div>
           </div>
-          <div className="messages-users">
-            USERS
-          </div>
+          { userIndex }
         </div>
       </div>
     );

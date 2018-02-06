@@ -9,14 +9,29 @@
   background-color: #2F3136;
 
   .channel-list {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     height: calc(100% - 100px);
     overflow-y: scroll;
     align-items: center;
 
+    &:hover {
+    }
+
+    &::-webkit-scrollbar {
+      width: 3px;
+      background: #2F3137;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #1E2125;
+      border-radius: 20px;
+    }
+
     .channel-button {
-      color: white;
+      color: #71757E;
       text-decoration: none;
       font-size: 14px;
       width: 200px;
@@ -32,6 +47,7 @@
 
     .active {
       background-color: #42464E;
+      color: white;
 
       .remove-channel-button {
         display: block;
@@ -50,11 +66,6 @@
           outline: none;
         }
       }
-    }
-
-    &::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
     }
   }
 
