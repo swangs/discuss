@@ -134,6 +134,7 @@ class Messages extends React.Component {
             </a>
           </div>
         </nav>
+        <div className="messages-body">
           <div className='message-display'>
             <div className='chat-logs'>
               { this.renderChatLog() }
@@ -152,7 +153,9 @@ class Messages extends React.Component {
               </div>
             </div>
           </div>
-        <div className="messages-body">
+          <div className="messages-users">
+            USERS
+          </div>
         </div>
       </div>
     );
