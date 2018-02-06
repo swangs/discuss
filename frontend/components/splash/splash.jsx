@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
   render() {
-    let splashNav;
+    let splashSession;
     if (this.props.currentUser) {
-      splashNav = (
-        <div className="splashNav">
+      splashSession = (
+        <div className="splash-session">
           <h2>Welcome, {this.props.currentUser.username}.</h2>
           <Link to='/' onClick={this.props.logout}>Logout</Link>
           <Link to="/@me">Open</Link>
         </div>
       );
     } else {
-      splashNav = (
-        <div className="splashNav">
+      splashSession = (
+        <div className="splash-session">
           <Link to="/login">Login</Link>
         </div>
       );
@@ -22,8 +22,17 @@ class Splash extends React.Component {
 
     return (
       <div id="splash">
-        <h1>It's time to ditch Skype and TeamSpeak.</h1>
-        {splashNav}
+        <div className='nav'>
+          {splashSession}
+          <div className='splash-nav-left'>
+            <div className='splash-logo'></div>
+            <h1>DISCUSS</h1>
+          </div>
+        </div>
+        <div className='splash-text'>
+          <h1 className='splash-h1'>It's time to ditch Skype and TeamSpeak.</h1>
+          <p className="splash-p">A live chat app clone of Discord, Discuss is built with react/redux frontend and rails backend. Seamlessly chat in real time with group or private channels.</p>
+        </div>
       </div>
 
     );
