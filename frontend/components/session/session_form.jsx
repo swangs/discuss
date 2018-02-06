@@ -74,6 +74,7 @@
               onSubmit={this.handleSubmit()}>
               <label>Username<br/>
                 <input
+                  autoFocus
                   type="text"
                   value={this.state.username}
                   onChange={this.handleInput("username")}>

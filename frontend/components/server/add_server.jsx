@@ -83,6 +83,7 @@ class AddServer extends React.Component {
               <p>Create a new server and invite your friends.  Its free!</p>
               <div className="server-icon"></div>
               <input
+                autoFocus
                 type="text"
                 placeholder="enter a server name"
                 value={this.state.name}

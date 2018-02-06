@@ -81,6 +81,7 @@ class ChannelDropdown extends React.Component {
           <div id="channel-dropdown" className="dropdown-content">
             <p>Server Options</p>
             <input
+              autoFocus
               type="text"
               className="add-channel-input"
               placeholder="Add Channel"

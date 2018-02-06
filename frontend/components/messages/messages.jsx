@@ -132,6 +132,7 @@ class Messages extends React.Component {
             <div className="chat-form">
               <div className="input-box">
                 <input
+                  autoFocus
                   type='text'
                   placeholder={`Message #${this.props.currentChannel.name}`}
                   className='chat-input'
