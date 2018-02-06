@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ActionCable from 'actioncable';
+import UsersContainer from '../users/users_container';
 
 class Messages extends React.Component {
   constructor(props) {
@@ -123,11 +124,7 @@ class Messages extends React.Component {
 
     let userIndex = null;
     if (this.props.currentServer.id !== this.props.currentUser.myServer) {
-      userIndex = (
-        <div className="messages-users">
-          USERS
-        </div>
-      );
+      userIndex = <UsersContainer />;
     }
 
     return (

@@ -4,6 +4,7 @@ import sessionReducer from './session_reducer';
 import serverReducer from './server_reducer';
 import channelReducer from './channel_reducer';
 import messageReducer from './message_reducer';
+import userReducer from './user_reducer';
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   servers: serverReducer,
   channels: channelReducer,
   messages: messageReducer,
-  errors: errorsReducer
+  users: userReducer,
+  errors: errorsReducer,
 });
 
 export default rootReducer;
