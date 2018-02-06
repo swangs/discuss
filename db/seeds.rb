@@ -14,13 +14,13 @@ Message.delete_all
 # Users and UserServers
 User.create(username: "discussBOT", password: "master")
 User.create(username: "swango", password: "master")
-User.create(username: "demouser", password: "demouser")
+User.create(username: "demo", password: "demopassword")
 User.create(username: "user1", password: "password")
 User.create(username: "user2", password: "password")
 
 Server.create(name: "discussBOTServer", owner_id: 1, direct_message: true)
 Server.create(name: "swangoServer", owner_id: 2, direct_message: true)
-Server.create(name: "demouserServer", owner_id: 3, direct_message: true)
+Server.create(name: "demoServer", owner_id: 3, direct_message: true)
 Server.create(name: "user1Server", owner_id: 4, direct_message: true)
 Server.create(name: "user2Server", owner_id: 5, direct_message: true)
 

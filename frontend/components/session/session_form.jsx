@@ -40,7 +40,7 @@
 
   switchForms() {
     const demoUser = () => {
-      this.props.submitForm({username: "demouser", password: "demouser"});
+      this.props.submitForm({ username: "demo", password: "demopassword" });
     };
     const demo = <Link to="@me" onClick={demoUser}>Demo</Link>;
 
