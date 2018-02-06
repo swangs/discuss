@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import ActionCable from 'actioncable';
 
 class Messages extends React.Component {
@@ -11,7 +11,7 @@ class Messages extends React.Component {
       currentChannel: this.props.currentChannel.id,
       currentUser: this.props.currentUser.id,
       chatLogs: this.props.messages,
-      refresh: true
+      success: true
     };
   }
 
@@ -24,6 +24,7 @@ class Messages extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
+      this.setState({ success: true });
       let serverId = newProps.location.pathname;
       serverId = serverId.slice(1);
       let index = serverId.indexOf('/');
@@ -35,16 +36,21 @@ class Messages extends React.Component {
       serverId = newProps.location.pathname.includes("/@me") ?
         newProps.currentUser.myServer :
         serverId;
-      this.props.getServer(serverId)
+      this.props.getChannels(serverId)
         .then(() => this.props.getChannel(channelId))
-        .then(() => (
-          this.setState({
-            currentChatMessage: '',
-            currentChannel: this.props.currentChannel.id,
-            currentUser: this.props.currentUser.id,
-            chatLogs: this.props.messages
-          })
-        ));
+        .then(() => {
+          if (this.props.channels.includes(this.props.currentChannel.id)) {
+            this.setState({
+              currentChatMessage: '',
+              currentChannel: this.props.currentChannel.id,
+              currentUser: this.props.currentUser.id,
+              chatLogs: this.props.messages,
+              success: true,
+            });
+          } else {
+            this.setState({ success: false });
+          }
+        });
     }
   }
 
@@ -111,6 +117,9 @@ class Messages extends React.Component {
   }
 
   render() {
+    if (!this.state.success) {
+      return <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
+    }
 
     return (
       <div className="messages">

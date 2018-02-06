@@ -8,12 +8,6 @@ class ServerIndex extends React.Component {
     this.state = { isModalOpen: false };
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.location !== newProps.location) {
-      this.props.getServers();
-    }
-  }
-
   openModal() {
     this.setState({ isModalOpen: true });
     this.props.clearErrors();
