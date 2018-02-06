@@ -4,7 +4,8 @@ import ChannelDropdown from './channel_dropdown';
 import {
   getServers,
   getServer,
-  deleteServer
+  deleteServer,
+  leaveServer
 } from '../../actions/server_actions';
 import { getChannel,
   postChannel,
@@ -23,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
   getChannel: (channelId) => dispatch(getChannel(channelId)),
   postChannel: (serverId, channel) => dispatch(postChannel(serverId, channel)),
   deleteChannel: (channelId) => dispatch(deleteChannel(channelId)),
+  leaveServer: (membershipInfo) => dispatch(leaveServer(membershipInfo)),
 });
 
 export default withRouter(connect(

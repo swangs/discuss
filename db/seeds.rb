@@ -77,10 +77,6 @@ Server.create(name: "Chat", owner_id: 1)
 Channel.create(name: "general", server_id: 8)
 Channel.create(name: "chat about everything", server_id: 8)
 
-
-ServerMembership.create(server_id: 6, user_id: 1)
-ServerMembership.create(server_id: 7, user_id: 1)
-ServerMembership.create(server_id: 8, user_id: 1)
 ServerMembership.create(server_id: 6, user_id: 2)
 ServerMembership.create(server_id: 7, user_id: 2)
 ServerMembership.create(server_id: 8, user_id: 2)

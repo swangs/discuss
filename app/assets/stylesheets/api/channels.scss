@@ -94,20 +94,22 @@
     .add-channel-input {
       width: 80%;
       margin: 10px 7.5%;
-
     }
 
-    .delete-server-button {
+    .remove-server-button {
+      width: 80%;
       color: red;
       background: none;
       border: 1px solid red;
-      margin: 5px auto;
+      margin: 10px auto;
       display: block;
       cursor: pointer;
       border: 1px solid red;
+      border-radius: 10px;
 
       &:hover {
-        background-color: #ddd;
+        color: #FFFFFF;
+        background-color: red;
       }
     }
   }

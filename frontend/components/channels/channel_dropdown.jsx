@@ -17,6 +17,16 @@ class ChannelDropdown extends React.Component {
       .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
 
+  leaveServer() {
+    return () => this.props.leaveServer({
+      server_id: this.props.currentServer.id,
+      user_id: this.props.currentUser.id
+    }).then(() => this.props.getServers())
+      .then(() => this.props.getServer(this.props.currentUser.myServer))
+      .then(() => {console.log("it pushes after this");})
+      .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
+  }
+
   toggleDropdown() {
     document.getElementById("channel-dropdown").classList.toggle("show");
     document.getElementById("cog").classList.toggle("fa-spin");
@@ -50,11 +60,19 @@ class ChannelDropdown extends React.Component {
 
   render() {
 
-    let deleteButton = null;
-    if (this.props.currentServer.owner_id === this.props.currentUser.id) {
-      deleteButton = (
+    let leaveServer = (
         <button
-          className="delete-server-button"
+          className="remove-server-button"
+          onClick={this.leaveServer()}>
+          Leave Server
+        </button>
+      );
+
+    let deleteServer = null;
+    if (this.props.currentServer.owner_id === this.props.currentUser.id) {
+      deleteServer = (
+        <button
+          className="remove-server-button"
           onClick={this.deleteServer()}>
           Delete Server
         </button>
@@ -84,12 +102,13 @@ class ChannelDropdown extends React.Component {
               autoFocus
               type="text"
               className="add-channel-input"
-              placeholder="Add Channel"
+              placeholder="Create Channel"
               value={ this.state.name }
               onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
               onChange={ (e) => this.updateNewChannel(e) }>
             </input>
-            {deleteButton}
+            { leaveServer }
+            { deleteServer }
           </div>
         </div>
       );

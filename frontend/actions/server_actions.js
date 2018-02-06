@@ -71,3 +71,10 @@ export const joinServer = (serverName) => dispatch => {
     error => dispatch(receiveServerErrors(error.responseJSON))
   );
 };
+
+export const leaveServer = (membershipInfo) => dispatch => {
+  return ServerApiUtil.leaveServer(membershipInfo).then(
+    servers => dispatch(receiveServers(servers)),
+    error => dispatch(receiveServerErrors(error.responseJSON))
+  );
+};

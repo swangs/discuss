@@ -34,3 +34,11 @@ export const joinServer = (serverName) => {
     data: serverName
   });
 };
+
+export const leaveServer = (membershipInfo) => {
+  return $.ajax({
+    url: "api/server_memberships/delete",
+    method: "DELETE",
+    data: membershipInfo
+  });
+};

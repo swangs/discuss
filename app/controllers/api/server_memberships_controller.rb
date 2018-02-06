@@ -15,6 +15,17 @@ class Api::ServerMembershipsController < ApplicationController
     end
   end
 
+  def destroy
+    @server_membership = ServerMembership.where(user_id: params[:user_id]).find_by(server_id: params[:server_id])
+    if @server_membership
+      @server_membership.destroy
+      @servers = current_user.servers.where(direct_message: false)
+      render 'api/servers/index'
+    else
+      render json: ["Server not found"], status: 404
+    end
+  end
+
   private
 
   def server_membership_params
