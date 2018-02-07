@@ -40,6 +40,10 @@
       border-radius: 5px;
       word-wrap: break-word;
 
+      &:hover {
+      background-color: #373A40;
+      }
+
       .remove-channel-button {
         display: none;
       }
@@ -48,6 +52,11 @@
     .active {
       background-color: #42464E;
       color: white;
+
+      &:hover{
+        background-color: #42464E;
+        cursor: default;
+      }
 
       .remove-channel-button {
         display: block;
