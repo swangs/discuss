@@ -41,7 +41,6 @@ class AddServer extends React.Component {
       if (type === "create") {
         this.props.postServer(this.state.create)
         .then(response => { server = response.currentServer; })
-        .then(() => {console.log(server);})
         .then(() => this.props.getServers())
         .then(() => this.props.getServer(`${server.id}`))
         .then(() => this.props.history.push(`/${server.id}/${server.channels[0].id}`))

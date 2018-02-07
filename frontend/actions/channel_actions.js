@@ -51,8 +51,8 @@ export const getChannel = (channelId) => dispatch => {
   );
 };
 
-export const postChannel = (channelId, formChannel) => dispatch => {
-  return ChannelApiUtil.postChannel(channelId, formChannel).then(
+export const postChannel = (serverId, formChannel) => dispatch => {
+  return ChannelApiUtil.postChannel(serverId, formChannel).then(
     channel => dispatch(receiveChannel(channel)),
     error => dispatch(receiveChannelErrors(error.responseJSON))
   );

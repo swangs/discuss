@@ -50,12 +50,12 @@ class ChannelDropdown extends React.Component {
     const serverId = this.props.currentServer.id;
     let channel;
     this.props.postChannel(serverId, this.state)
-    .then(response => {channel = response.currentChannel; })
-    .then(() => this.props.getServers())
-    .then(() => this.props.getServer(`${serverId}`))
-    .then(() => this.props.getChannel(channel.id))
-    .then(() => this.props.history.push(`/${serverId}/${channel.id}`))
-    .then(() => this.toggleDropdown());
+      .then(response => {channel = response.currentChannel; })
+      .then(() => this.props.getServers())
+      .then(() => this.props.getServer(`${serverId}`))
+      .then(() => this.props.getChannel(channel.id))
+      .then(() => this.props.history.push(`/${serverId}/${channel.id}`))
+      .then(() => this.toggleDropdown());
   }
 
   render() {
