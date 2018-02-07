@@ -3,12 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #session {
-  background: asset-url('background_botw.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   display: flex;
+}
+
+.background-0{
+  background: asset-url('background_botw.jpg');
+}
+
+.background-1 {
+  background: asset-url('background_ow.jpg');
+}
+
+.background-2 {
+  background: asset-url('background_wow.jpg');
 }
 
 .auth-box {
