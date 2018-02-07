@@ -132,10 +132,10 @@ class Messages extends React.Component {
         <nav className="messages-nav">
           <p><i className="fas fa-hashtag"></i> {this.props.currentChannel.name}</p>
           <div className="swang-links">
-            <a href='https://github.com/swangs/discuss'>
+            <a href='https://github.com/swangs/discuss' target="_blank">
               <i className="fab fa-github fa-2x"></i>
             </a>
-            <a href='https://www.linkedin.com/in/s-wang/'>
+            <a href='https://www.linkedin.com/in/s-wang/' target="_blank">
               <i className="fab fa-linkedin fa-2x"></i>
             </a>
           </div>

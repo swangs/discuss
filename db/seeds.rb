@@ -64,9 +64,10 @@ ServerMembership.create(server_id: 5, user_id: 5)
 
 # Public Servers
 
-Server.create(name: "Demo Server", owner_id: 1)
+Server.create(name: "Discuss", owner_id: 1)
 Channel.create(name: "general", server_id: 6)
 Channel.create(name: "discuss public channel", server_id: 6)
+Channel.create(name: "feedback and suggestions", server_id: 6)
 
 Server.create(name: "App Academy", owner_id: 1)
 Channel.create(name: "general", server_id: 7)
