@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ActionCable from 'actioncable';
 import UsersContainer from '../users/users_container';
+import EmotesMenu from './emotes_menu';
 import validUrl from 'valid-url';
 
 class Messages extends React.Component {
@@ -101,6 +102,11 @@ class Messages extends React.Component {
     });
   }
 
+  addEmote(emote) {
+    this.setState({ currentChatMessage: `${this.state.currentChatMessage} ${emote}`});
+    this.refs.chatInput.focus();
+  }
+
   renderChatLog() {
     const log = this.state.chatLogs.slice().reverse();
     return log.map((message) => {
@@ -174,6 +180,7 @@ class Messages extends React.Component {
               <div className="input-box">
                 <input
                   autoFocus
+                  ref="chatInput"
                   type='text'
                   placeholder={`Message ${messagePlaceholder}`}
                   className='chat-input'
@@ -181,6 +188,7 @@ class Messages extends React.Component {
                   onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
                   onChange={ (e) => this.updateCurrentChatMessage(e) }>
                 </input>
+                <EmotesMenu addEmote={emote => this.addEmote(emote)}/>
               </div>
             </div>
           </div>

@@ -1,0 +1,39 @@
+.emotes-button {
+  cursor: pointer;
+  filter: grayscale(100%);
+  margin: auto;
+
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+
+.show-button {
+ filter: grayscale(0%);
+}
+
+.emotes-content {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  display: none;
+  background-color: #f1f1f1;
+  width: 230px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+
+  .emotes {
+    margin: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.show {
+  display: flex;
+  flex-wrap: wrap;
+}
