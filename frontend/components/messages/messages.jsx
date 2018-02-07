@@ -127,10 +127,20 @@ class Messages extends React.Component {
       userIndex = <UsersContainer />;
     }
 
+    let messagePlaceholder = `#${this.props.currentChannel.name}`;
+    if (this.props.currentServer.id === this.props.currentUser.myServer) {
+      messagePlaceholder = `@${this.props.currentChannel.name.replace(this.props.currentUser.username, "")}`;
+    }
+
+    let channelHeader = <p><i className="fas fa-hashtag"></i> {this.props.currentChannel.name}</p>;
+    if (this.props.currentServer.id === this.props.currentUser.myServer) {
+      channelHeader = <p><i className="fas fa-at"></i> {this.props.currentChannel.name.replace(this.props.currentUser.username, "")}</p>;
+    }
+
     return (
       <div className="messages">
         <nav className="messages-nav">
-          <p><i className="fas fa-hashtag"></i> {this.props.currentChannel.name}</p>
+          { channelHeader }
           <div className="swang-links">
             <a href='https://github.com/swangs/discuss' target="_blank">
               <i className="fab fa-github fa-2x"></i>
@@ -150,7 +160,7 @@ class Messages extends React.Component {
                 <input
                   autoFocus
                   type='text'
-                  placeholder={`Message #${this.props.currentChannel.name}`}
+                  placeholder={`Message ${messagePlaceholder}`}
                   className='chat-input'
                   value={ this.state.currentChatMessage }
                   onKeyPress={ (e) => this.handleChatInputKeyPress(e) }

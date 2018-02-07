@@ -35,14 +35,17 @@ class ChannelIndex extends React.Component {
     let channelList;
     if (this.props.channels) {
       if (this.props.currentServer.id === this.props.currentUser.myServer) {
-        channelList = this.props.channels.map(channel => (
-          <NavLink
-            key={channel.id}
-            className="channel-button"
-            to={`/@me/${channel.id}`}>
-            <i className="fas fa-hashtag"></i> {channel.name}
+        channelList = this.props.channels.map(channel => {
+          const name = channel.name.replace(this.props.currentUser.username, "");
+          return (
+            <NavLink
+              key={channel.id}
+              className="channel-button"
+              to={`/@me/${channel.id}`}>
+              <i className="fas fa-at"></i> {name}
             </NavLink>
-          ));
+          );
+        });
       } else {
         let deleteChannel = null;
         channelList = this.props.channels.map(channel => {
