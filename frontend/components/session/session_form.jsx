@@ -8,12 +8,15 @@
   constructor(props) {
     super(props);
 
+    const background = `background-${Math.floor(Math.random() * 3)}`;
+
     this.state = {
       username: "",
       password: "",
       demoUsername: null,
       demoPassword: null,
       demoSubmit: null,
+      background,
     };
   }
 
@@ -90,11 +93,9 @@
 
   render() {
 
-    const background = `background-${Math.floor(Math.random() * 3)}`;
-
     const header = this.props.formType === 'login' ? "WELCOME BACK!" : "CREATE AN ACCOUNT";
     return (
-      <div id="session" className={ background }>
+      <div id="session" className={ this.state.background }>
         <div className="auth-box">
           <div className="auth-logo">
             <div className="logo"></div>
