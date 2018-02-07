@@ -67,13 +67,13 @@ class Prot extends React.Component {
       "Waiting around",
       "Once more into the breach",
       "Stretching before rigorous activity",
-      "Repositioning",
       "Traveling to...",
       "Experiencing Tranquility",
       "Cheers love, the servers are here!",
       "Caaan do!",
       "lawk...",
       "sheuuups",
+      "preparing big blasties",
     ];
 
     this.state = {
