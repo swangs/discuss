@@ -18,13 +18,13 @@
   right: 60px;
   display: none;
   background-color: #f1f1f1;
-  width: 230px;
-  padding: 10px;
+  width: 300px;
   border-radius: 5px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 2;
 
   .emotes {
+    font-size: 20px;
     margin: 5px;
 
     &:hover {
