@@ -27,6 +27,14 @@ class EmotesMenu extends React.Component {
 
   render () {
 
+    window.onclick = function(event) {
+      if (!event.target.matches(".emotes-button")
+        && !event.target.matches(".emotes-content")) {
+        document.getElementById("emotes-content").classList.remove("show");
+        document.getElementById("emotes-button").classList.remove("show-button");
+      }
+    };
+
     const emotes = this.emotes.map((emote, i) => (
       <li
         onClick={() => this.selectEmote(emote)}
