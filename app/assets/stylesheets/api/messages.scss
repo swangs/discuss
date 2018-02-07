@@ -62,14 +62,17 @@
         width: 100%;
         padding: 15px 0px;
 
-        .chat-created-at {
-          font-size: 12px;
-          color: #484B53;
-        }
 
         .chat-author {
           font-weight: 700;
           margin: 5px 0px;
+          padding-bottom: 5px;
+          
+          .chat-created-at {
+            font-size: 12px;
+            color: #484B53;
+            display: inline-block;
+          }
         }
 
         .chat-message {
