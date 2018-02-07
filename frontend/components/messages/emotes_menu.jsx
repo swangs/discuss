@@ -4,6 +4,8 @@ class EmotesMenu extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { selected: false };
+
     this.emotes = [
       '😀','😁','😂','😃','😄','😅','😆','😉','😊','😋','😎','😍','😘','😗',
       '😙','😚','🙂','🤗','🤔','😐','😑','😶','🙄','😏','😣','😥','😮','🤐',
@@ -12,13 +14,14 @@ class EmotesMenu extends React.Component {
       '😰','😱','😳','😵','😡','😠','😷','🤒','🤕','😇','🤓','😈','👿','👹',
       '👺','💀','👻','👽','🤖','💩','💪','👈','👉','☝️','👆','🖕','👇','✌️',
       '🖖','🤘','🖐','✋','👌','👍','👎','✊','👊','👋','✍️','👏','👐','🙌',
-      '🙏' 
+      '🙏'
     ];
   }
 
   toggleDropdown() {
     document.getElementById("emotes-content").classList.toggle("show");
     document.getElementById("emotes-button").classList.toggle("show-button");
+    this.setState({ selected: !this.state.selected });
   }
 
   selectEmote(emote) {
@@ -29,11 +32,12 @@ class EmotesMenu extends React.Component {
 
   render () {
 
-    window.onclick = function(event) {
+    window.onclick = (event) => {
       if (!event.target.matches(".emotes-button")
         && !event.target.matches(".emotes-content")) {
         document.getElementById("emotes-content").classList.remove("show");
         document.getElementById("emotes-button").classList.remove("show-button");
+        this.setState({ selected: false });
       }
     };
 
@@ -46,13 +50,15 @@ class EmotesMenu extends React.Component {
       </li>
     ));
 
+    let button = !this.state.selected ? '😀' : '🤔';
+
     return (
       <Fragment>
         <div
           onClick={() => this.toggleDropdown()}
           id="emotes-button"
           className="emotes-button">
-          😀
+          { button }
         </div>
         <ul id="emotes-content" className="emotes-content">
           {emotes}
