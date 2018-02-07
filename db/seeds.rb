@@ -25,11 +25,21 @@ Server.create(name: "demoServer", owner_id: 3, direct_message: true)
 Server.create(name: "user1Server", owner_id: 4, direct_message: true)
 Server.create(name: "user2Server", owner_id: 5, direct_message: true)
 
-Channel.create(name: "Welcome to Discuss", server_id: 1)
-Channel.create(name: "Welcome to Discuss", server_id: 2)
-Channel.create(name: "Welcome to Discuss", server_id: 3)
-Channel.create(name: "Welcome to Discuss", server_id: 4)
-Channel.create(name: "Welcome to Discuss", server_id: 5)
+Channel.create(name: "discussBOTswango")
+DirectMessageMembership.create(server_id: 1, channel_id: 1)
+DirectMessageMembership.create(server_id: 2, channel_id: 1)
+
+Channel.create(name: "discussBOTdemo")
+DirectMessageMembership.create(server_id: 1, channel_id: 2)
+DirectMessageMembership.create(server_id: 3, channel_id: 2)
+
+Channel.create(name: "discussBOTuser1")
+DirectMessageMembership.create(server_id: 1, channel_id: 3)
+DirectMessageMembership.create(server_id: 4, channel_id: 3)
+
+Channel.create(name: "discussBOTuser2")
+DirectMessageMembership.create(server_id: 1, channel_id: 4)
+DirectMessageMembership.create(server_id: 5, channel_id: 4)
 
 Message.create(content: "Welcome to Discuss!", author_id: 1, channel_id: 1)
 Message.create(content: "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .", author_id: 1, channel_id: 1)

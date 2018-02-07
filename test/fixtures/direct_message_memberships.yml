@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: direct_message_memberships
+#
+#  id         :integer          not null, primary key
+#  server_id  :integer          not null
+#  channel_id :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server_id: 1
+  channel_id: 1
+
+two:
+  server_id: 1
+  channel_id: 1

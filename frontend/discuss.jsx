@@ -3,14 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-//TESTING
-import { getChannels, getChannel, postChannel, deleteChannel} from './util/channel_util';
-window.getChannels = getChannels;
-window.getChannel = getChannel;
-window.deleteChannel = deleteChannel;
-window.postChannel = postChannel;
-//TESTING
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {

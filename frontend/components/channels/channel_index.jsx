@@ -27,15 +27,15 @@ class ChannelIndex extends React.Component {
     return () => this.props.deleteChannel(channelId)
       // .then(() => this.props.getServers())
       .then(() => this.props.getServer(this.props.currentServer.id))
-      .then(() => this.props.history.push(`/${this.props.currentServer.id}/${this.props.currentServer.channels[0].id}`));
+      .then(() => this.props.history.push(`/${this.props.currentServer.id}/${this.props.channels[0].id}`));
   }
 
   render() {
 
     let channelList;
-    if (this.props.currentServer.channels) {
+    if (this.props.channels) {
       if (this.props.currentServer.id === this.props.currentUser.myServer) {
-        channelList = this.props.currentServer.channels.map(channel => (
+        channelList = this.props.channels.map(channel => (
           <NavLink
             key={channel.id}
             className="channel-button"
@@ -45,9 +45,9 @@ class ChannelIndex extends React.Component {
           ));
       } else {
         let deleteChannel = null;
-        channelList = this.props.currentServer.channels.map(channel => {
+        channelList = this.props.channels.map(channel => {
           if (this.props.currentServer.owner_id === this.props.currentUser.id
-            && this.props.currentServer.channels.length > 1) {
+            && this.props.channels.length > 1) {
               deleteChannel = (
                 <button
                   className="remove-channel-button"

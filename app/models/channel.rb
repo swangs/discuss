@@ -10,9 +10,16 @@
 #
 
 class Channel < ApplicationRecord
-  validates :name, :server, presence: true
+  validates :name, presence: true
 
-  belongs_to :server
+  belongs_to :server,
+  optional: true
 
   has_many :messages, dependent: :destroy
+
+  has_many :direct_message_memberships
+  has_many :direct_message_servers,
+  through: :direct_message_memberships,
+  source: :server
+
 end

@@ -3,6 +3,7 @@ class Api::ChannelsController < ApplicationController
 
   def index
     @channels = Server.find_by(id: params[:server_id]).channels
+    @direct_message_channels = Server.find_by(id: params[:server_id]).direct_message_channels
     render 'api/channels/index'
   end
 
@@ -18,8 +19,10 @@ class Api::ChannelsController < ApplicationController
   def create
     if signed_in?
       @channel = Channel.new(channel_params)
-      @channel.server_id = params[:server_id]
-      @channel.name = "#{@channel.name}"
+      server = Server.find(params[:server_id])
+      if !server.direct_message
+        @channel.server_id = params[:server_id]
+      end
       if @channel.save
         render 'api/channels/show'
       else

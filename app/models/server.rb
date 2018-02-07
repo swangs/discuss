@@ -20,9 +20,13 @@ class Server < ApplicationRecord
   class_name: :User
 
   has_many :server_memberships, dependent: :destroy
-
   has_many :users,
   through: :server_memberships
 
   has_many :channels, dependent: :destroy
+
+  has_many :direct_message_memberships
+  has_many :direct_message_channels,
+  through: :direct_message_memberships,
+  source: :channel
 end
