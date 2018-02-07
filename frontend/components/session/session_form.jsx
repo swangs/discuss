@@ -1,5 +1,7 @@
   import React from 'react';
   import { Link } from 'react-router-dom';
+  import Typed from 'typed.js';
+
 
   class SessionForm extends React.Component {
 
@@ -7,7 +9,10 @@
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      demoUsername: null,
+      demoPassword: null,
+      demoSubmit: null,
     };
   }
 
@@ -40,7 +45,34 @@
 
   switchForms() {
     const demoUser = () => {
-      this.props.submitForm({ username: "demo", password: "demopassword" });
+      this.setState({
+        username: "",
+        password: ""
+      });
+      const demo = { username: 'demo', password: 'demopassword' };
+
+      const username = {
+          strings: ["demo"],
+          typeSpeed: 100
+      };
+
+      const password = {
+          strings: ["demopassword"],
+          typeSpeed: 50
+      };
+
+      this.setState({
+        demoUsername: setTimeout(() => {
+          new Typed(".username", username);
+        }, 0),
+        demoPassword: setTimeout(() => {
+          new Typed(".password", password);
+        }, 700),
+        demoSubmit: setTimeout(() => {
+          this.props.submitForm(demo);
+        }, 1600),
+      });
+
     };
     const demo = <Link to="@me" onClick={demoUser}>Demo</Link>;
 
@@ -75,6 +107,7 @@
               <label>Username<br/>
                 <input
                   autoFocus
+                  className="username"
                   type="text"
                   value={this.state.username}
                   onChange={this.handleInput("username")}>
@@ -82,6 +115,7 @@
               </label>
               <label>Password<br/>
                 <input
+                  className="password"
                   type="password"
                   value={this.state.password}
                   onChange={this.handleInput("password")}>
