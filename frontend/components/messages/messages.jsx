@@ -113,7 +113,7 @@ class Messages extends React.Component {
         if (message.content.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
           messageContent = (
             <a href={ message.content } target="_blank">
-              <img src={ message.content }></img>
+              { message.content } <br/> <img src={ message.content }></img>
             </a>
           );
         } else {
