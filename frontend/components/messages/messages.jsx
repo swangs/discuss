@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ActionCable from 'actioncable';
 import UsersContainer from '../users/users_container';
+import validUrl from 'valid-url';
 
 class Messages extends React.Component {
   constructor(props) {
@@ -107,11 +108,26 @@ class Messages extends React.Component {
       const date = `${timestamp.toLocaleDateString()}`;
       const time = `${timestamp.toLocaleTimeString()}`;
 
+      let messageContent;
+      if (validUrl.isUri(message.content)){
+        if (message.content.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
+          messageContent = (
+            <a href={ message.content } target="_blank">
+              <img src={ message.content }></img>
+            </a>
+          );
+        } else {
+          messageContent = <a href={message.content} target="_blank">{ message.content }</a>;
+        }
+      } else {
+        messageContent = message.content;
+      }
+
       return (
         <li className="message" key={`chat_${message.id}`}>
           <div className='chat-created-at'>{ date } { time }</div>
           <div className='chat-author'>{ message.author }</div>
-          <div className='chat-message'>{ message.content }</div>
+          <div className='chat-message'>{ messageContent }</div>
         </li>
       );
     });

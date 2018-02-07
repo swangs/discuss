@@ -76,6 +76,16 @@
           color: #C3C4C6;
           font-size: 14px;
           word-wrap: break-word;
+
+          a {
+            color: blue;
+            text-decoration: underline;
+
+            img {
+              min-width: 20vw;
+              max-width: 50vw;
+            }
+          }
         }
       }
     }
