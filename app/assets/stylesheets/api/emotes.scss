@@ -1,7 +1,7 @@
 .emotes-button {
   cursor: pointer;
   filter: grayscale(100%);
-  margin: auto;
+  margin-right: 15px;
 
   &:hover {
     filter: grayscale(0%);
