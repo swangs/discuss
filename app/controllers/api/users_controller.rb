@@ -18,6 +18,7 @@ class Api::UsersController < ApplicationController
       Message.create(content: "Welcome to Discuss!", channel_id: channel.id, author_id: 1)
       Message.create(content: "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .", channel_id: channel.id, author_id: 1)
       Message.create(content: "Create new channels by opening the Server Options.", channel_id: channel.id, author_id: 1)
+      Message.create(content: "Send direct messages by clicking on a user in the member's list.", channel_id: channel.id, author_id: 1)
       Message.create(content: "Invite friends to your server and chat away!", channel_id: channel.id, author_id: 1)
 
       sign_in(@user)
