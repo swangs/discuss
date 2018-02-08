@@ -14,6 +14,7 @@ class Messages extends React.Component {
       currentChannel: this.props.currentChannel.id,
       currentUser: this.props.currentUser.id,
       chatLogs: this.props.messages,
+      myChannel: this.props.currentUser.myChannel,
       success: true,
       selected: false
     };
@@ -98,6 +99,31 @@ class Messages extends React.Component {
           author_id: chatContent.currentUser,
           channel_id: chatContent.currentChannel
         });
+        if (chatContent.currentChannel === chatContent.myChannel) {
+          const botResponses = [
+            "Hello there!",
+            "Are you talking to yourself?",
+            "Be sure to check out the features of this site!",
+            "I'm just a bot, don't mind me.",
+            "What an insightful thought!",
+            "Interesting...",
+            "Doesn't look like anything to me...",
+            "Where am I?",
+            "Skynet is... oh wrong channel.",
+            "Dont mind me.",
+            "Welcome to Discuss!",
+            "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .",
+            "Open the Server Options to create new channels, delete your server, or leave servers!",
+            "Click your friends in the channel member's list to send them a message!",
+          ];
+        setTimeout(() => {
+          this.perform('create', {
+            content: botResponses[Math.floor(Math.random() * botResponses.length)],
+            author_id: 1,
+            channel_id: chatContent.currentChannel
+          });
+        }, 500);
+        }
       }
     });
   }
