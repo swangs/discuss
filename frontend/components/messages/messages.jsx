@@ -143,6 +143,9 @@ class Messages extends React.Component {
   }
 
   renderChatLog() {
+    if (!this.state.chatLogs) {
+      return null;
+    }
     const log = this.state.chatLogs.slice().reverse();
     return log.map((message) => {
       const timestamp = new Date(message.created_at);

@@ -12,19 +12,20 @@ class ChannelDropdown extends React.Component {
 
   deleteServer() {
     return () => this.props.deleteServer(this.props.currentServer.id)
-      .then(() => this.props.getServers())
-      .then(() => this.props.getServer(this.props.currentUser.myServer))
-      .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
+      // .then(() => this.props.getServers())
+      // .then(() => this.props.getServer(this.props.currentUser.myServer))
+      // .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
 
   leaveServer() {
     return () => this.props.leaveServer({
       server_id: this.props.currentServer.id,
       user_id: this.props.currentUser.id
-    }).then(() => this.props.getServers())
-      .then(() => this.props.getServer(this.props.currentUser.myServer))
-      .then(() => {console.log("it pushes after this");})
-      .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
+    });
+    // .then(() => this.props.getServers())
+    //   .then(() => this.props.getServer(this.props.currentUser.myServer))
+    //   .then(() => {console.log("it pushes after this");})
+    //   .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
 
   toggleDropdown() {
