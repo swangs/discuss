@@ -206,10 +206,10 @@ class Messages extends React.Component {
     if (!this.state.success) {
       return <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
     }
-
+    
     let userIndex = null;
     if (this.props.currentServer.id !== this.props.currentUser.myServer) {
-      userIndex = <UsersContainer />;
+      userIndex = <UsersContainer ownerId={this.props.currentServer.owner_id}/>;
     }
 
     let messagePlaceholder = `#${this.props.currentChannel.name}`;

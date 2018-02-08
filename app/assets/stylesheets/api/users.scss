@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
   .messages-users {
     min-width: 240px;
     background-color: #2F3136;
@@ -26,6 +25,10 @@
         font-size: 14px;
         width: 90%;
         padding: 15px;
+
+        i {
+          color: gold;
+        }
 
         &:hover {
           cursor: pointer;

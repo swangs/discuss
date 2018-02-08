@@ -16,14 +16,16 @@ class Users extends React.Component {
 
   render() {
     let usersList = this.props.users.map(user => {
+      const serverOwner = this.props.ownerId === user.id ?
+        <i className="far fa-star"></i> : null;
+
       return <li
         onClick={this.startDirectMessage(user)}
         className="users"
         key={user.id}>
-        {user.username}
+        {user.username} {serverOwner}
       </li>;
     });
-
 
     return (
       <div className="messages-users">
