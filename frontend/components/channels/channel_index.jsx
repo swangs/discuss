@@ -5,23 +5,23 @@ import ChannelDropdownContainer from './channel_dropdown_container';
 
 class ChannelIndex extends React.Component {
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.location !== newProps.location) {
-      let serverId = newProps.location.pathname;
-      serverId = serverId.slice(1);
-      let index = serverId.indexOf('/');
-      if (index < 0) {
-        index = serverId.length;
-      }
-      let channelId = serverId.slice(index + 1);
-      serverId = serverId.slice(0, index);
-      serverId = newProps.location.pathname.includes("/@me") ?
-        newProps.currentUser.myServer :
-        serverId;
-      this.props.getServer(serverId);
-      this.props.getChannel(channelId);
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.location !== newProps.location) {
+  //     let serverId = newProps.location.pathname;
+  //     serverId = serverId.slice(1);
+  //     let index = serverId.indexOf('/');
+  //     if (index < 0) {
+  //       index = serverId.length;
+  //     }
+  //     let channelId = serverId.slice(index + 1);
+  //     serverId = serverId.slice(0, index);
+  //     serverId = newProps.location.pathname.includes("/@me") ?
+  //       newProps.currentUser.myServer :
+  //       serverId;
+  //     this.props.getServer(serverId);
+  //     this.props.getChannel(channelId);
+  //   }
+  // }
 
   deleteChannel(channelId) {
     return () => this.props.deleteChannel(channelId)
