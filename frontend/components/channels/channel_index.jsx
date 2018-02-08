@@ -71,7 +71,7 @@ class ChannelIndex extends React.Component {
       }
     }
 
-    window.onclick = function(event) {
+    window.onclick = (event) => {
       if (!event.target.matches('.dropdown')
         && !event.target.matches('.dropdown-p')
         && !event.target.matches('.fa-cog')
