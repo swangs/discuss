@@ -115,7 +115,7 @@ class Messages extends React.Component {
   }
 
   addEmote(emote) {
-    this.setState({ currentChatMessage: `${this.state.currentChatMessage} ${emote}`});
+    this.setState({ currentChatMessage: `${this.state.currentChatMessage}${emote}`});
     this.refs.chatInput.focus();
   }
 
