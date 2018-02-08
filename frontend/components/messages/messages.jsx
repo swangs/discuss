@@ -14,7 +14,8 @@ class Messages extends React.Component {
       currentChannel: this.props.currentChannel.id,
       currentUser: this.props.currentUser.id,
       chatLogs: this.props.messages,
-      success: true
+      success: true,
+      selected: false
     };
   }
 
@@ -97,9 +98,20 @@ class Messages extends React.Component {
   handleSendEvent(event) {
     event.preventDefault();
     this.chats.create(this.state);
+    document.getElementById("emotes-content").classList.remove("show");
+    document.getElementById("emotes-button").classList.remove("show-button");
     this.setState({
-      currentChatMessage: ''
+      currentChatMessage: '',
+      selected: false
     });
+  }
+
+  selectAction(type) {
+    if (type === "toggle") {
+      this.setState({ selected: !this.state.selected });
+    } else {
+      this.setState({ selected: false });
+    }
   }
 
   addEmote(emote) {
@@ -188,7 +200,11 @@ class Messages extends React.Component {
                   onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
                   onChange={ (e) => this.updateCurrentChatMessage(e) }>
                 </input>
-                <EmotesMenu addEmote={emote => this.addEmote(emote)}/>
+                <EmotesMenu
+                  addEmote={emote => this.addEmote(emote)}
+                  selected={ this.state.selected }
+                  selectAction={(type) => this.selectAction(type)}
+                  />
               </div>
             </div>
           </div>

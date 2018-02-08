@@ -71,27 +71,27 @@ class ChannelIndex extends React.Component {
       }
     }
 
-    window.onclick = (event) => {
-      if (!event.target.matches('.dropdown')
-        && !event.target.matches('.dropdown-p')
-        && !event.target.matches('.fa-cog')
-        && !event.target.matches('.add-channel-input')) {
-        let dropdowns = document.getElementsByClassName("dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-          let openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-        let cog = document.getElementsByClassName("fa-cog");
-        for (var j = 0; j < cog.length; j++) {
-          let spinningCog = cog[j];
-          if (spinningCog.classList.contains('fa-spin')) {
-            spinningCog.classList.remove('fa-spin');
-          }
-        }
-      }
-    };
+    // window.onclick = (event) => {
+    //   if (!event.target.matches('.dropdown')
+    //     && !event.target.matches('.dropdown-p')
+    //     && !event.target.matches('.fa-cog')
+    //     && !event.target.matches('.add-channel-input')) {
+    //     let dropdowns = document.getElementsByClassName("dropdown-content");
+    //     for (var i = 0; i < dropdowns.length; i++) {
+    //       let openDropdown = dropdowns[i];
+    //       if (openDropdown.classList.contains('show')) {
+    //         openDropdown.classList.remove('show');
+    //       }
+    //     }
+    //     let cog = document.getElementsByClassName("fa-cog");
+    //     for (var j = 0; j < cog.length; j++) {
+    //       let spinningCog = cog[j];
+    //       if (spinningCog.classList.contains('fa-spin')) {
+    //         spinningCog.classList.remove('fa-spin');
+    //       }
+    //     }
+    //   }
+    // };
 
     return (
       <div className="channel-index">
