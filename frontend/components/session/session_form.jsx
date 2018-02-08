@@ -8,7 +8,7 @@
   constructor(props) {
     super(props);
 
-    const background = `background-${Math.floor(Math.random() * 2)}`;
+    const background = `background-${Math.floor(Math.random() * 4)}`;
 
     this.state = {
       username: "",
@@ -58,7 +58,7 @@
           strings: ["demopassword"],
           typeSpeed: 50
       };
-      
+
       let demoUsername = setTimeout(() => {
         new Typed(".username", username);
       }, 0);
