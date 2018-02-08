@@ -13,9 +13,6 @@
     this.state = {
       username: "",
       password: "",
-      demoUsername: null,
-      demoPassword: null,
-      demoSubmit: null,
       background,
     };
   }
@@ -49,10 +46,7 @@
 
   switchForms() {
     const demoUser = () => {
-      this.setState({
-        username: "",
-        password: ""
-      });
+
       const demo = { username: 'demo', password: 'demopassword' };
 
       const username = {
@@ -64,21 +58,23 @@
           strings: ["demopassword"],
           typeSpeed: 50
       };
+      
+      let demoUsername = setTimeout(() => {
+        new Typed(".username", username);
+      }, 0);
+      let demoPassword = setTimeout(() => {
+        new Typed(".password", password);
+      }, 700);
+      let demoSubmit = setTimeout(() => {
+        this.props.submitForm(demo);
+      }, 1600);
 
-      this.setState({
-        demoUsername: setTimeout(() => {
-          new Typed(".username", username);
-        }, 0),
-        demoPassword: setTimeout(() => {
-          new Typed(".password", password);
-        }, 700),
-        demoSubmit: setTimeout(() => {
-          this.props.submitForm(demo);
-        }, 1600),
-      });
+      demoUsername();
+      demoPassword();
+      demoSubmit();
 
     };
-    const demo = <Link to="@me" onClick={demoUser}>Demo</Link>;
+    const demo = <a onClick={demoUser}>Demo</a>;
 
     if (this.props.formType === "login") {
       return (

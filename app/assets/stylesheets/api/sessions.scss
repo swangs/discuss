@@ -64,9 +64,13 @@
     color: #87909c;
     font-size: 12px;
     margin: 15px 0px;
+
     a {
       text-decoration: none;
       color: white;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 }
