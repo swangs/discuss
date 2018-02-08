@@ -11,13 +11,19 @@ const mapStateToProps = (state, ownProps) => {
       servers.push(parseInt(serverId));
     });
   }
-
+  let channels = [];
+  if (state.channels.channels) {
+    state.channels.channels.map(channel => {
+      channels.push(channel.id);
+    });
+  }
   return {
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
     currentServer: state.servers.currentServer,
     currentChannel: state.channels.currentChannel,
     servers,
+    channels,
   };
 };
 
@@ -101,7 +107,7 @@ class Prot extends React.Component {
           serverId;
       })
       .then(() => this.props.getServer(serverId))
-      .then(() => this.props.getChannels(serverId))
+      // .then(() => this.props.getChannels(serverId))
       .then(() => this.props.getChannel(channelId))
       .then(
         () => {setTimeout(() => this.setState({ loading: false, errors: false }), 2000);},
@@ -119,18 +125,27 @@ class Prot extends React.Component {
       }
       let channelId = serverId.slice(index + 1);
       serverId = serverId.slice(0, index);
-      newProps.getServers()
-      .then(() => {
-        serverId = newProps.location.pathname.slice(0, 4).includes("/@me") ?
-        newProps.currentUser.myServer :
-        serverId;
-      })
-      .then(() => newProps.getServer(serverId))
-      .then(() => newProps.getChannels(serverId))
-      .then(() => newProps.getChannel(channelId))
-      .then(() => this.setState({ loading: false, errors: false }),
-        error => this.setState({ loading: false, errors: true} ));
-    }
+    //   newProps.getServers()
+    //   .then(() => {
+        // serverId = newProps.location.pathname.slice(0, 4).includes("/@me") ?
+        // newProps.currentUser.myServer :
+        // serverId;
+    //   })
+    //   .then(() => newProps.getServer(serverId))
+    //   .then(() => newProps.getChannels(serverId))
+    //   .then(() => newProps.getChannel(channelId))
+      // .then(() => this.setState({ loading: false, errors: false }),
+      //   error => this.setState({ loading: false, errors: true} ));
+    // }
+
+    serverId = newProps.location.pathname.slice(0, 4).includes("/@me") ?
+    newProps.currentUser.myServer :
+    serverId;
+     newProps.getServer(serverId)
+     .then(() => newProps.getChannel(channelId))
+     .then(() => this.setState({ loading: false, errors: false }),
+       error => this.setState({ loading: false, errors: true} ));
+     }
   }
 
   render() {
@@ -157,7 +172,7 @@ class Prot extends React.Component {
     let route;
     let servers = this.props.servers;
     this.props.servers.push(this.props.currentUser.myServer);
-    if (servers.includes(this.props.currentServer.id)) {
+    if (servers.includes(this.props.currentServer.id) || !this.props.channels.includes(this.props.currentChannel.id)) {
       route = <this.props.component {...this.props} />;
     } else {
       route = <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;

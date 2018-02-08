@@ -19,6 +19,11 @@ const channelReducer = (oldState = _nullChannel, action) => {
   let newState;
   let channels;
   switch (action.type) {
+    case RECEIVE_SERVER:
+      channels = action.currentServer.channels;
+      newState = merge({}, oldState);
+      newState.channels = channels;
+      return newState;
     case RECEIVE_ALL_CHANNELS:
       channels = Object.values(action.channels);
       newState = merge({}, oldState);
