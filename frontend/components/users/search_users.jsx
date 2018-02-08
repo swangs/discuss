@@ -51,7 +51,7 @@ class SearchUsers extends React.Component {
     } else {
       usersList = [];
       this.props.users.forEach(user => {
-        if (user.username.includes(this.state.user)) {
+        if (user.username.toLowerCase().includes(this.state.user.toLowerCase())) {
           usersList.push(
             <li
               onClick={this.startDirectMessage(user)}
