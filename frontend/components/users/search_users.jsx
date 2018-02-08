@@ -20,8 +20,14 @@ class SearchUsers extends React.Component {
       let channel;
       this.props.postChannel(serverId, { userId })
         .then(response => { channel = response.currentChannel; },
-          error => this.props.history.push(`/@me/${error.errors[0]}`))
-        .then(() => this.props.history.push(`/@me/${channel.id}`));
+          error => {
+            this.setState({ user: "" });
+            this.props.history.push(`/@me/${error.errors[0]}`);
+          })
+        .then(() => {
+          this.setState({ user: "" });
+          this.props.history.push(`/@me/${channel.id}`);
+        });
       this.props.onClose();
     };
   }
@@ -29,6 +35,7 @@ class SearchUsers extends React.Component {
   close(e) {
     e.preventDefault();
     if (this.props.onClose) {
+      this.setState({ user: "" });
       this.props.onClose();
     }
   }
