@@ -92,6 +92,10 @@
     i{
       display: block;
       margin: auto 15px;;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

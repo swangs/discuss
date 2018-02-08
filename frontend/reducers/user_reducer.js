@@ -2,20 +2,31 @@ import {
   RECEIVE_SERVER,
   REMOVE_SERVER
 } from '../actions/server_actions';
-import { LOGOUT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, LOGOUT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
+const _nullUsers = {
+  allUsers: null,
+  users: null,
+};
 
-const userReducer = (oldState = [], action) => {
+
+const userReducer = (oldState = _nullUsers, action) => {
   Object.freeze(oldState);
-  let newState;
+  let newState = merge({}, oldState);
   switch (action.type) {
+    case RECEIVE_CURRENT_USER:
+      newState.allUsers = action.currentUser.allUsers;
+      return newState;
     case RECEIVE_SERVER:
-      return action.currentServer.users;
+      newState.users = action.currentServer.users;
+      return newState;
     case REMOVE_SERVER:
-      return [];
+      newState.users = null;
+      return newState;
     case LOGOUT_USER:
-      return [];
+      newState.users = null;
+      return newState;
     default:
       return oldState;
   }

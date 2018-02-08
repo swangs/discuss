@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import SearchUsersContainer from '../users/search_users_container';
 
 class ChannelDropdown extends React.Component {
   constructor(props) {
@@ -7,11 +8,20 @@ class ChannelDropdown extends React.Component {
 
     this.state = {
       name: "",
+      isModalOpen: false
     };
   }
 
+  openModal() {
+    this.setState({ isModalOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false });
+  }
+
   deleteServer() {
-    return () => this.props.deleteServer(this.props.currentServer.id)
+    return () => this.props.deleteServer(this.props.currentServer.id);
       // .then(() => this.props.getServers())
       // .then(() => this.props.getServer(this.props.currentUser.myServer))
       // .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
@@ -86,6 +96,14 @@ class ChannelDropdown extends React.Component {
           <p>
             {`Welcome, ${this.props.currentUser.username}`}
           </p>
+          <SearchUsersContainer
+            isOpen={this.state.isModalOpen}
+            onClose={() => this.closeModal()}
+            />
+          <i
+            onClick={() => this.openModal()}
+            className="fas fa-search">
+          </i>
         </div>
       );
     } else {
