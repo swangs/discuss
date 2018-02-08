@@ -31,7 +31,7 @@ class Splash extends React.Component {
         </div>
         <div className='splash-text'>
           <h1 className='splash-h1'>It's time to ditch Discord, Skype, and TeamSpeak.</h1>
-          <p className="splash-p">A live chat app cloned from Discord, Discuss is built with react-redux frontend and rails backend. Seamlessly chat in real time with group or private channels.</p>
+          <p className="splash-p">A live chat app cloned from Discord, Discuss is built with React-Redux frontend and Rails backend. Seamlessly chat in real time with group or private channels.</p>
         </div>
       </div>
 
