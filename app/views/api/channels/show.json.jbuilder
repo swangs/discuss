@@ -4,6 +4,7 @@ json.set! :messages do
     json.id message.id
     json.content message.content
     json.author message.author.username
+    json.image_url asset_path(message.author.avatar.url)
     json.created_at message.created_at
   end
 end

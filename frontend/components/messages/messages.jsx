@@ -225,8 +225,13 @@ class Messages extends React.Component {
 
       return (
         <li className="message" key={`chat_${message.id}`}>
-          <div className='chat-author'>{ message.author }&nbsp;&nbsp;<div className='chat-created-at'>{ date } { time }</div></div>
-          <div className='chat-message'>{ messageContent }</div>
+          <div className="message-image">
+            <img className="author-avatar" src={message.image_url}></img>
+          </div>
+          <div className="message-text">
+            <div className='chat-author'>{ message.author }&nbsp;&nbsp;<div className='chat-created-at'>{ date } { time }</div></div>
+            <div className='chat-message'>{ messageContent }</div>
+          </div>
         </li>
       );
     });
