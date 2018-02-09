@@ -9,6 +9,8 @@ Technologies used:
 * PostgreSQL database
 * Websockets integrated with Action Cable
 # Features
+## Chat supports text, links, image links, and youtube videos.
+Input strings are automatically converted to links, embedded images, and embedded youtube videos.
 ## Servers and Channels
 Users can join or create any server with a unique server name.  Servers are not private, however, only members of a server have access to the channels and messages.
 ### Joining and Creating Servers
@@ -47,7 +49,7 @@ createSocket() {
   });
 }
 ```
-Sockets are deleted when the component is unmounted.  During development users would randomly switch and post between channels because multiple sockets were open!
+Subscriptions are deleted when the component is unmounted.  During development users would randomly switch and post between channels because multiple sockets were open!
 ```javascript
 componentWillUnmount() {
   this.deleteSocket();
@@ -56,7 +58,4 @@ deleteSocket() {
   this.cable.subscriptions.remove(this.chats);
 }
 ```
-## Chat supports text, links, image links, and youtube videos.
-Input strings are automatically converted to links, embedded images, and embedded youtube videos.
-
 Check out the app to discover more features!
