@@ -6,6 +6,17 @@ export const register = (user) => {
   });
 };
 
+export const updateUser = (formData) => {
+  return $.ajax({
+    url: "api/users/edit",
+    method: "PATCH",
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    data: formData
+  });
+};
+
 export const login = (user) => {
   return $.ajax({
     url: "api/session",

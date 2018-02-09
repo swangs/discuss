@@ -1,33 +1,30 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ChannelDropdownContainer from './channel_dropdown_container';
+import UserAvatarContainer from '../users/user_avatar_container';
 
 
 class ChannelIndex extends React.Component {
+  constructor(props) {
+    super(props);
 
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.location !== newProps.location) {
-  //     let serverId = newProps.location.pathname;
-  //     serverId = serverId.slice(1);
-  //     let index = serverId.indexOf('/');
-  //     if (index < 0) {
-  //       index = serverId.length;
-  //     }
-  //     let channelId = serverId.slice(index + 1);
-  //     serverId = serverId.slice(0, index);
-  //     serverId = newProps.location.pathname.includes("/@me") ?
-  //       newProps.currentUser.myServer :
-  //       serverId;
-  //     this.props.getServer(serverId);
-  //     this.props.getChannel(channelId);
-  //   }
-  // }
+    this.state = {
+      isModalOpen: false
+    };
+  }
 
   deleteChannel(channelId) {
     return () => this.props.deleteChannel(channelId)
-      // .then(() => this.props.getServers())
       .then(() => this.props.getServer(this.props.currentServer.id))
       .then(() => this.props.history.push(`/${this.props.currentServer.id}/${this.props.channels[0].id}`));
+  }
+
+  openModal() {
+    this.setState({ isModalOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false });
   }
 
   render() {
@@ -71,28 +68,6 @@ class ChannelIndex extends React.Component {
       }
     }
 
-    // window.onclick = (event) => {
-    //   if (!event.target.matches('.dropdown')
-    //     && !event.target.matches('.dropdown-p')
-    //     && !event.target.matches('.fa-cog')
-    //     && !event.target.matches('.add-channel-input')) {
-    //     let dropdowns = document.getElementsByClassName("dropdown-content");
-    //     for (var i = 0; i < dropdowns.length; i++) {
-    //       let openDropdown = dropdowns[i];
-    //       if (openDropdown.classList.contains('show')) {
-    //         openDropdown.classList.remove('show');
-    //       }
-    //     }
-    //     let cog = document.getElementsByClassName("fa-cog");
-    //     for (var j = 0; j < cog.length; j++) {
-    //       let spinningCog = cog[j];
-    //       if (spinningCog.classList.contains('fa-spin')) {
-    //         spinningCog.classList.remove('fa-spin');
-    //       }
-    //     }
-    //   }
-    // };
-
     return (
       <div className="channel-index">
         <ChannelDropdownContainer />
@@ -101,6 +76,11 @@ class ChannelIndex extends React.Component {
         </ul>
         <div className="user-info">
           <p>{this.props.currentUser.username}</p>
+          <i onClick={() => this.openModal()} className="fas fa-user-circle fa-2x"></i>
+          <UserAvatarContainer
+            isOpen={this.state.isModalOpen}
+            onClose={() => this.closeModal()}
+            />
           <Link className='logout' to='/' onClick={this.props.logout}>Logout</Link>
         </div>
       </div>

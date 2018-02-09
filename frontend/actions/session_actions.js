@@ -36,6 +36,13 @@ export const register = (formUser) => dispatch => {
   );
 };
 
+export const updateUser = (formData) => dispatch => {
+  return SessionApiUtil.updateUser(formData).then(
+    user => dispatch(receiveCurrentUser(user)),
+    error => dispatch(receiveSessionErrors(error.responseJSON))
+  );
+};
+
 export const login = (formUser) => dispatch => {
   return SessionApiUtil.login(formUser).then(
     user => dispatch(receiveCurrentUser(user)),

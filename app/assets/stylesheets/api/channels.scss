@@ -172,7 +172,17 @@
 
     p{
       display: block;
-      margin: auto;;
+      margin: auto;
+    }
+
+    i {
+      display: block;
+      margin: auto;
+
+      &:hover {
+        cursor: pointer;
+        color: #7082E1;
+      }
     }
 
     .logout {

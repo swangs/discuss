@@ -126,3 +126,79 @@
   }
 
 }
+
+.user-info {
+
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: #2F3136;
+    width: 400px;
+    height: 400px;
+    border-radius: 5px;
+    align-items: center;
+
+
+    .user-search-input {
+      background: #484B53;
+      width: 90%;
+      height: 30px;
+      margin: 10px 4%;
+      border-radius: 5px;
+      border: none;
+      outline:none;
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .users-ul {
+      width: 100%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: scroll;
+
+
+      .users {
+        font-size: 16px;
+        width: 80%;
+        padding: 15px;
+        margin: 5px;
+        text-align: center;
+        background: #373A40;
+
+        &:hover {
+          cursor: pointer;
+          background: #141414
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        background: #2F3137;
+        border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #1E2125;
+        border-radius: 20px;
+      }
+    }
+
+  }
+
+  .backdrop {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background: rgba(0, 0, 0, 0.85);
+  }
+}
