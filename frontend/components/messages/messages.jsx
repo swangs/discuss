@@ -169,6 +169,17 @@ class Messages extends React.Component {
     this.refs.chatInput.focus();
   }
 
+  getYoutubeId(url) {
+    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    let match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+
   renderChatLog() {
     if (!this.state.chatLogs) {
       return null;
@@ -181,7 +192,20 @@ class Messages extends React.Component {
 
       let messageContent;
       if (validUrl.isUri(message.content)){
-        if (message.content.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
+        if (message.content.match(/\.(youtube.com)/) !== null) {
+          let youtubeId = this.getYoutubeId(message.content);
+          messageContent = (
+            <a href={ message.content } target="_blank">
+              { message.content }<br/><iframe src={ `//www.youtube.com/embed/${youtubeId}` } frameBorder="0" allowFullScreen></iframe>
+            </a>
+          );
+        } else if (message.content.match(/\.(giphy.com)/)) {
+          messageContent = (
+            <a href={ message.content } target="_blank">
+              { message.content }<br/><iframe src={ message.content } frameBorder="0" allowFullScreen></iframe>
+            </a>
+          );
+        } else if (message.content.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
           messageContent = (
             <a href={ message.content } target="_blank">
               { message.content }<br/><img src={ message.content }></img>

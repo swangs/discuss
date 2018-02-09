@@ -83,6 +83,7 @@
           a {
             color: #1995CD;
             white-space: pre-wrap;
+            position: relative;
 
             &:hover {
               text-decoration: underline;
@@ -92,6 +93,11 @@
               max-width: 400px;
               max-height: 300px;
               padding-top: 5px;
+            }
+
+            iframe {
+              width: 560px;
+              height: 315px;
             }
           }
         }
