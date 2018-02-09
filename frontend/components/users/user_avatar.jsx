@@ -49,7 +49,7 @@ class UserAvatar extends React.Component {
     return (
       <div>
         <div className="modal">
-          <h1>Update User Icon</h1>
+          <h1>Change Avatar</h1>
           <img src={this.state.imageUrl}></img>
           <input type="file" onChange={this.updateFile()}></input>
           <button onClick={this.handleSubmit()}>Update</button>
