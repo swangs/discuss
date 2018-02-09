@@ -1,6 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV["s3_bucket"],
+      :access_key_id => ENV["s3_access_key_id"],
+      :secret_access_key => ENV["s3_secret_access_key"],
+      :s3_region => ENV["s3_region"],
+      :s3_host_name => "s3.#{ENV['s3_region']}.amazonaws.com"
+    }
+  }
+
   config.web_socket_server_url = "wss://aa-discuss.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://aa-discuss.herokuapp.com', 'http://aa-discuss.herokuapp.com']
 
