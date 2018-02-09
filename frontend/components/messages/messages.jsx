@@ -103,14 +103,15 @@ class Messages extends React.Component {
           const botResponses = [
             "Hello there!",
             "Are you talking to yourself?",
-            "Be sure to check out the features of this site!",
+            "Be sure to check out the features of this app!",
             "I'm just a bot, don't mind me.",
             "What an insightful thought!",
             "Interesting...",
             "Doesn't look like anything to me...",
             "Where am I?",
-            "Skynet is... oh wrong channel.",
+            "Skynet is... oh, wrong channel.",
             "Dont mind me.",
+            "Can you repeat that?",
             "Welcome to Discuss!",
             "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .",
             "Open the Server Options to create new channels, delete your server, or leave servers!",
@@ -206,7 +207,7 @@ class Messages extends React.Component {
     if (!this.state.success) {
       return <Redirect to={`/@me/${this.props.currentUser.myChannel}`} />;
     }
-    
+
     let userIndex = null;
     if (this.props.currentServer.id !== this.props.currentUser.myServer) {
       userIndex = <UsersContainer ownerId={this.props.currentServer.owner_id}/>;
