@@ -54,51 +54,6 @@ class Messages extends React.Component {
             chatLogs: newProps.messages,
             success: true,
           });
-  //   if (this.props.location !== newProps.location) {
-  //     this.setState({ success: true });
-  //     let serverId = newProps.location.pathname;
-  //     serverId = serverId.slice(1);
-  //     let index = serverId.indexOf('/');
-  //     if (index < 0) {
-  //       index = serverId.length;
-  //     }
-  //     let channelId = serverId.slice(index + 1);
-  //     serverId = serverId.slice(0, index);
-  //     serverId = newProps.location.pathname.includes("/@me") ?
-  //       newProps.currentUser.myServer :
-  //       serverId;
-      // this.props.getChannels(serverId)
-      //   .then(() => this.props.getChannel(channelId))
-        // .then(() => {
-        //   if (this.props.channels.includes(this.props.currentChannel.id)) {
-        //     this.setState({
-        //       currentChatMessage: '',
-        //       currentChannel: this.props.currentChannel.id,
-        //       currentUser: this.props.currentUser.id,
-        //       chatLogs: this.props.messages,
-        //       success: true,
-        //     });
-        //   } else {
-        //     this.setState({ success: false });
-        //   }
-        // });
-
-    //   this.props.getChannel(channelId)
-    //   .then(() => {
-    //     if (this.props.channels.includes(this.props.currentChannel.id)) {
-    //       this.setState({
-    //         currentChatMessage: '',
-    //         currentChannel: this.props.currentChannel.id,
-    //         currentUser: this.props.currentUser.id,
-    //         chatLogs: this.props.messages,
-    //         success: true,
-    //       });
-    //     } else {
-    //       console.log("something failed");
-    //       this.setState({ success: false });
-    //     }
-    //   });
-  //   }
   }
 
   randomBotMessage() {
