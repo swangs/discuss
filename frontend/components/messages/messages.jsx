@@ -207,7 +207,7 @@ class Messages extends React.Component {
         } else if (message.content.match(/\/.(giphy.com|media.giphy.com)/)) {
           messageContent = (
             <a href={ message.content } target="_blank">
-              { message.content }<br/><iframe src={ message.content } frameBorder="0" allowFullScreen></iframe>
+              { message.content }<br/><iframe src={ message.content } frameBorder="0" scrolling="no"></iframe>
             </a>
           );
         } else if (message.content.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
