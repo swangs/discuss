@@ -199,7 +199,7 @@ class Messages extends React.Component {
               { message.content }<br/><iframe src={ `//www.youtube.com/embed/${youtubeId}` } frameBorder="0" allowFullScreen></iframe>
             </a>
           );
-        } else if (message.content.match(/\.(giphy.com)/)) {
+        } else if (message.content.match(/\/.(giphy.com|media.giphy.com)/)) {
           messageContent = (
             <a href={ message.content } target="_blank">
               { message.content }<br/><iframe src={ message.content } frameBorder="0" allowFullScreen></iframe>
