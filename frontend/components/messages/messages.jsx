@@ -9,6 +9,25 @@ class Messages extends React.Component {
   constructor(props) {
     super(props);
 
+    this.botResponses = [
+      "Hello there!",
+      "Are you talking to yourself?",
+      "Be sure to check out the features of this app!",
+      "I'm just a bot, don't mind me.",
+      "What an insightful thought!",
+      "Interesting...",
+      "Doesn't look like anything to me...",
+      "Where am I?",
+      "Skynet is... oh, wrong channel.",
+      "Dont mind me.",
+      "Can you repeat that?",
+      "Welcome to Discuss!",
+      "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .",
+      "Open the Server Options to create new channels, delete your server, or leave servers!",
+      "Click your friends in the channel member's list to send them a message!",
+    ];
+    this.randomBotMessage = this.randomBotMessage.bind(this);
+
     this.state = {
       currentChatMessage: '',
       currentChannel: this.props.currentChannel.id,
@@ -82,6 +101,9 @@ class Messages extends React.Component {
   //   }
   }
 
+  randomBotMessage() {
+    return this.botResponses[Math.floor(Math.random() * this.botResponses.length)];
+  }
 
   createSocket() {
     this.cable = ActionCable.createConsumer();
@@ -93,33 +115,16 @@ class Messages extends React.Component {
         this.props.getChannel(this.props.currentChannel.id)
           .then(() => this.setState({ chatLogs: this.props.messages }));
       },
-      create: function(chatContent) {
+      create: function(chatContent, randomBotMessage) {
         this.perform('create', {
           content: chatContent.currentChatMessage,
           author_id: chatContent.currentUser,
           channel_id: chatContent.currentChannel
         });
-        if (chatContent.currentChannel === chatContent.myChannel) {
-          const botResponses = [
-            "Hello there!",
-            "Are you talking to yourself?",
-            "Be sure to check out the features of this app!",
-            "I'm just a bot, don't mind me.",
-            "What an insightful thought!",
-            "Interesting...",
-            "Doesn't look like anything to me...",
-            "Where am I?",
-            "Skynet is... oh, wrong channel.",
-            "Dont mind me.",
-            "Can you repeat that?",
-            "Welcome to Discuss!",
-            "Navigate servers using the left sidebar. Create your own server or join a friend's by clicking the + .",
-            "Open the Server Options to create new channels, delete your server, or leave servers!",
-            "Click your friends in the channel member's list to send them a message!",
-          ];
+        if (chatContent.currentChannel === chatContent.myChannel && chatContent.currentChatMessage !== "") {
         setTimeout(() => {
           this.perform('create', {
-            content: botResponses[Math.floor(Math.random() * botResponses.length)],
+            content: randomBotMessage(),
             author_id: 1,
             channel_id: chatContent.currentChannel
           });
@@ -147,7 +152,7 @@ class Messages extends React.Component {
 
   handleSendEvent(event) {
     event.preventDefault();
-    this.chats.create(this.state);
+    this.chats.create(this.state, this.randomBotMessage);
     document.getElementById("emotes-content").classList.remove("show");
     document.getElementById("emotes-button").classList.remove("show-button");
     this.setState({
