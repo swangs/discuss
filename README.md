@@ -8,6 +8,7 @@ Technologies used:
 * Ruby on Rails backend
 * PostgreSQL database
 * Websockets integrated with Action Cable
+* AWS implemented for uploading images
 # Features
 ## Chat supports text, links, image links, and youtube videos.
 Input strings are automatically converted to links, embedded images, and embedded youtube videos.
