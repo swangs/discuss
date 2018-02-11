@@ -59,9 +59,11 @@
           typeSpeed: 50
       };
 
+
+
       let demoUsername = setTimeout(() => {
         new Typed(".username", username);
-      }, 0);
+      }, 10);
       let demoPassword = setTimeout(() => {
         new Typed(".password", password);
       }, 700);
@@ -69,9 +71,13 @@
         this.props.submitForm(demo);
       }, 1600);
 
-      demoUsername();
-      demoPassword();
-      demoSubmit();
+      this.setState({
+        username: "",
+        password: "",
+        demoUsername,
+        demoPassword,
+        demoSubmit,
+      });
 
     };
     const demo = <a onClick={demoUser}>Demo</a>;
