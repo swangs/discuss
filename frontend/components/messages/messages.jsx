@@ -67,8 +67,12 @@ class Messages extends React.Component {
     }, {
       connected: () => {},
       received: (data) => {
+        const currentChatMessage = this.state.currentChatMessage;
         this.props.getChannel(this.props.currentChannel.id)
-          .then(() => this.setState({ chatLogs: this.props.messages }));
+          .then(() => this.setState({
+             currentChatMessage,
+             chatLogs: this.props.messages,
+           }));
       },
       create: function(chatContent, randomBotMessage) {
         this.perform('create', {
