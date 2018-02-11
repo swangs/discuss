@@ -48,16 +48,6 @@ const Auth = ({ loggedIn, path, exact, component: Component }) => (
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
-// const Prot = ({ loggedIn, path, exact, component: Component }) => (
-//   <Route
-//     path={path}
-//     exact={exact}
-//     render={props => (
-//       !loggedIn ? <Redirect to="/login" /> : <Component {...props} />
-//     )}
-//   />
-// );
-
 class Prot extends React.Component {
 
   constructor(props) {
@@ -107,7 +97,6 @@ class Prot extends React.Component {
           serverId;
       })
       .then(() => this.props.getServer(serverId))
-      // .then(() => this.props.getChannels(serverId))
       .then(() => this.props.getChannel(channelId))
       .then(
         () => {setTimeout(() => this.setState({ loading: false, errors: false }), 2000);},
@@ -125,18 +114,6 @@ class Prot extends React.Component {
       }
       let channelId = serverId.slice(index + 1);
       serverId = serverId.slice(0, index);
-    //   newProps.getServers()
-    //   .then(() => {
-        // serverId = newProps.location.pathname.slice(0, 4).includes("/@me") ?
-        // newProps.currentUser.myServer :
-        // serverId;
-    //   })
-    //   .then(() => newProps.getServer(serverId))
-    //   .then(() => newProps.getChannels(serverId))
-    //   .then(() => newProps.getChannel(channelId))
-      // .then(() => this.setState({ loading: false, errors: false }),
-      //   error => this.setState({ loading: false, errors: true} ));
-    // }
 
     serverId = newProps.location.pathname.slice(0, 4).includes("/@me") ?
     newProps.currentUser.myServer :

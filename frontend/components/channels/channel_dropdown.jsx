@@ -22,9 +22,6 @@ class ChannelDropdown extends React.Component {
 
   deleteServer() {
     return () => this.props.deleteServer(this.props.currentServer.id);
-      // .then(() => this.props.getServers())
-      // .then(() => this.props.getServer(this.props.currentUser.myServer))
-      // .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
 
   leaveServer() {
@@ -32,10 +29,6 @@ class ChannelDropdown extends React.Component {
       server_id: this.props.currentServer.id,
       user_id: this.props.currentUser.id
     });
-    // .then(() => this.props.getServers())
-    //   .then(() => this.props.getServer(this.props.currentUser.myServer))
-    //   .then(() => {console.log("it pushes after this");})
-    //   .then(() => this.props.history.push(`/${this.props.currentUser.myServer}/${this.props.currentUser.myChannel}`));
   }
 
   toggleDropdown() {
@@ -62,9 +55,6 @@ class ChannelDropdown extends React.Component {
     let channel;
     this.props.postChannel(serverId, this.state)
       .then(response => {channel = response.currentChannel; })
-      // .then(() => this.props.getServers())
-      // .then(() => this.props.getServer(`${serverId}`))
-      // .then(() => this.props.getChannel(channel.id))
       .then(() => this.props.history.push(`/${serverId}/${channel.id}`))
       .then(() => this.toggleDropdown());
   }
