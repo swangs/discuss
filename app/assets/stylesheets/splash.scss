@@ -3,11 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #splash {
-  background: asset-url('background_botw.jpg');
-  background: asset-url('background_csgo.jpeg');
-  background: asset-url('background_nw.jpg');
-  background: asset-url('background_pubg.jpg');
-  background: asset-url('background_wow.jpg');
+  &:before {
+    content: asset-url('background_botw.jpg')
+            asset-url('background_csgo.jpeg')
+            asset-url('background_nw.jpg')
+            asset-url('background_pubg.jpg')
+            asset-url('background_wow.jpg')
+            asset-url('background_blizzworld.jpg');
+            visibility: hidden;
+            position: absolute;
+            left: -999em;
+  }
   background: asset-url('background_blizzworld.jpg');
   background-size: cover;
   background-repeat: no-repeat;
