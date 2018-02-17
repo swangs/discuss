@@ -17,6 +17,10 @@
     };
   }
 
+  componentDidMount() {
+    document.getElementById("session").classList.remove("fade-out");
+  }
+
   componentWillReceiveProps(newProps) {
     if (this.props.location !== newProps.location) {
       this.props.clearErrors();
@@ -96,8 +100,9 @@
   render() {
 
     const header = this.props.formType === 'login' ? "WELCOME BACK!" : "CREATE AN ACCOUNT";
+
     return (
-      <div id="session" className={ this.state.background }>
+      <div id="session" className={ `${this.state.background} fade-in fade-out` }>
         <div className="auth-box">
           <div className="auth-logo">
             <div className="logo"></div>
