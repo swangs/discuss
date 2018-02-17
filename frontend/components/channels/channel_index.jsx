@@ -75,8 +75,8 @@ class ChannelIndex extends React.Component {
           {channelList}
         </ul>
         <div className="user-info">
+          <img onClick={() => this.openModal()} src={this.props.currentUser.image_url}></img>
           <p>{this.props.currentUser.username}</p>
-          <i onClick={() => this.openModal()} className="fas fa-user-circle fa-2x"></i>
           <UserAvatarContainer
             isOpen={this.state.isModalOpen}
             onClose={() => this.closeModal()}

@@ -35,8 +35,8 @@
       text-decoration: none;
       font-size: 14px;
       width: 200px;
-      padding: 5px;
-      margin: 5px 0px;
+      padding: 10px 5px;
+      margin: 1px 0px;
       border-radius: 5px;
       word-wrap: break-word;
 
@@ -173,11 +173,16 @@
     p{
       display: block;
       margin: auto;
+      margin-left: 0px;
     }
 
-    i {
+    img {
       display: block;
-      margin: auto;
+      margin: auto 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 30px;
+      overflow: none;
 
       &:hover {
         cursor: pointer;
@@ -188,6 +193,7 @@
     .logout {
       display: block;
       margin: auto;
+      margin-right: 10px;
       font-size: 12px;
       height: 15px;
       width: 40px;

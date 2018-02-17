@@ -173,10 +173,13 @@
       background: #7082E1;
       width: 80%;
       padding: 15px;
+      color: #FFFFFF;
+      margin-bottom: 10px;
       border: none;
       border-radius: 5px;
 
       &:hover {
+        cursor: pointer;
         background-color: darken(#7085DE, 5%);
       }
     }
