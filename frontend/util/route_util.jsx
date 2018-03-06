@@ -70,6 +70,7 @@ class Prot extends React.Component {
       "lawk...",
       "sheuuups",
       "preparing big blasties",
+      "Constructing additional Pylons",
     ];
 
     this.state = {
