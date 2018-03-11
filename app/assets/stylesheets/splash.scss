@@ -96,15 +96,20 @@
     }
 
     a {
-      color: white;
+      color: #FFFFFF;
       text-decoration: none;
       font-size: 14px;
-      border: 3px solid white;
+      border: 3px solid #FFFFFF;
       border-radius: 50px;
       width: 80px;
-      padding: 5px 0px;
+      padding: 8px 5px;
       margin: 5px 0px;
       text-align: center;
+
+      &:hover {
+        color: #E1E1E1;
+        border: 3px solid #E1E1E1;
+      }
     }
   }
 }
