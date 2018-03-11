@@ -8,7 +8,7 @@
   constructor(props) {
     super(props);
 
-    const background = `background-${Math.floor(Math.random() * 5)}`;
+    const background = `background-${Math.floor(Math.random() * 6)}`;
 
     this.state = {
       username: "",
