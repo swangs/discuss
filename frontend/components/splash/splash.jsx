@@ -15,7 +15,7 @@ class Splash extends React.Component {
     } else {
       splashSession = (
         <div className="splash-session">
-          <Link to="/login">Login</Link>
+          <Link to="/login">Get Started</Link>
         </div>
       );
     }
